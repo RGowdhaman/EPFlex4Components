@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<project name="Collage" default="flex-debug">
+<project name="Collage" default="debug">
+	<property file="build.properties" />
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
 	<property name="src.dir" value="./src/"/>
 	
 	<target name="clean">
@@ -9,7 +11,7 @@
 		<mkdir dir="./build/release/" />
 	</target>
 	
-	<target name="flex-debug" depends="clean">
+	<target name="debug" depends="clean">
 		<property name="deploy.dir" value="./build/debug/"/>
 		<exec executable="mxmlc" failonerror="true">
 			<arg line="-source-path '${src.dir}'" />
@@ -18,7 +20,7 @@
 		</exec>
 	</target>
 	
-	<target name="flex-release" depends="clean">
+	<target name="release" depends="clean">
 		<property name="deploy.dir" value="./build/release/"/>
 		<exec executable="mxmlc" failonerror="true">
 			<arg line="-debug=false" />
@@ -26,5 +28,12 @@
 			<arg line="-output '${deploy.dir}/components.swf'"/>
 			<arg line="${src.dir}/CollageComponents.mxml"/>
 		</exec>
+	</target>
+	
+	<target name="swc-release" depends="clean">
+		<compc output="${basedir}/build/endlesspathsflex4com.swc">
+			<source-path path-element="${src.dir}" /> 
+			<include-sources dir="${src.dir}/com" includes="*" />
+		</compc>
 	</target>
 </project>
