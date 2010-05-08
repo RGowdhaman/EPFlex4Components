@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
-			   xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="955" minHeight="600" xmlns:components="com.endlesspaths.components.*">
+			   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="com.endlesspaths.components.*" backgroundColor="#EEEEEE" viewSourceURL="srcview/index.html">
+
+	<fx:Script>
+		<![CDATA[
+			protected function btnTest_clickHandler(event:MouseEvent):void
+			{
+				calloutTest.visible = !calloutTest.visible;
+				calloutTest.x = btnTest.x;
+				calloutTest.y = btnTest.y + btnTest.height;
+			}
+		]]>
+	</fx:Script>
+
 	<fx:Declarations>
 		<!-- Place non-visual elements (e.g., services, value objects) here -->
 	</fx:Declarations>
-	<components:HorizontalNumericStepper x="209" y="203" valuePrefix="thickness: " skinClass="com.endlesspaths.components.HorizontalNumericStepperSkin" width="300" height="46"/>
+	
+	<s:Button id="btnTest" label="Click me!" click="btnTest_clickHandler(event)"  x="10" y="10" fontSize="40" width="297" height="95"/>
+	
+	<components:CalloutPanel id="calloutTest" skinClass="com.endlesspaths.skins.CalloutPanelSkin" visible="false">
+		<components:layout>
+			<s:VerticalLayout/>
+		</components:layout>
+		<s:VGroup gap="8" paddingLeft="8" paddingRight="8" paddingTop="8" paddingBottom="8">
+			<components:HorizontalNumericStepper valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="300" height="46"/>
+		</s:VGroup>
+	</components:CalloutPanel>
+	
 </s:Application>

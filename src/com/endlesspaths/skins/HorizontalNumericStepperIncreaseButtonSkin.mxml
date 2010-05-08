@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+    ADOBE SYSTEMS INCORPORATED
+    Copyright 2008 Adobe Systems Incorporated
+    All Rights Reserved.
+
+    NOTICE: Adobe permits you to use, modify, and distribute this file
+    in accordance with the terms of the license agreement accompanying it.
+
+-->
+
+<!--- The default skin class for the Spark Button component.  
+
+       @see spark.components.Button
+        
+      @langversion 3.0
+      @playerversion Flash 10
+      @playerversion AIR 1.5
+      @productversion Flex 4
+-->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" 
+             xmlns:fb="http://ns.adobe.com/flashbuilder/2009" minWidth="21" minHeight="21" alpha.disabled="0.5">
+    
+    <!-- host component -->
+    <fx:Metadata>
+        <![CDATA[ 
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.Button")]
+        ]]>
+    </fx:Metadata>
+    
+    <!-- states -->
+    <s:states>
+        <s:State name="up" />
+        <s:State name="over" />
+        <s:State name="down" />
+        <s:State name="disabled" />
+    </s:states>
+    
+	
+	<s:Path data="M 49 39 C 49 44.523 44.523 49 39 49 L 0 49 L 0 49 L 0 0 L 0 0 L 39 0 C 44.523 0 49 4.477 49 10 L 49 39 Z" winding="nonZero" top="0" left="0" right="0" bottom="0">
+		<s:fill>
+			<s:LinearGradient rotation="190">
+				<s:GradientEntry alpha="1.0" color="#3C4866" ratio="0.23137254901960785"/>
+				<s:GradientEntry alpha="1.0" color="#423C5E" ratio="1"/>
+			</s:LinearGradient>
+		</s:fill>
+		<s:filters>
+			<s:BevelFilter angle="45.0" blurX="2" blurX.down="6" blurY="2" blurY.down="6" distance="2" highlightAlpha="0.75" highlightAlpha.over="0.9" highlightAlpha.down="0.5" highlightColor="0xFFFFFF" knockout="false" quality="3" shadowAlpha="0.75" shadowAlpha.over="0.5" shadowColor="0x000000" strength="1" type="inner"/>
+		</s:filters>
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#2B4381" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Path>
+    
+    <!-- layer 8: text -->
+    <!--- @copy spark.components.supportClasses.ButtonBase#labelDisplay -->
+    <s:Label id="labelDisplay"
+             textAlign="center"
+             verticalAlign="middle"
+             maxDisplayedLines="1"
+             horizontalCenter="0" verticalCenter="0"
+             left="0" right="0" top="0" bottom="0" text="B" color="#FFFFFF" alpha.up="0.95" alpha.over="0.9" alpha.down="1.0">
+    </s:Label>
+    
+</s:SparkSkin>

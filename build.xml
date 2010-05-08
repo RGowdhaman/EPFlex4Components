@@ -1,37 +1,11 @@
 <?xml version="1.0"?>
-<project name="Collage" default="debug">
+<project name="Collage" default="release">
 	<property file="build.properties" />
 	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
-	<property name="src.dir" value="./src/"/>
 	
-	<target name="clean">
-		<delete dir="./build/debug/" />
-		<delete dir="./build/release/" />
-		<mkdir dir="./build/debug/" />
-		<mkdir dir="./build/release/" />
-	</target>
-	
-	<target name="debug" depends="clean">
-		<property name="deploy.dir" value="./build/debug/"/>
-		<exec executable="mxmlc" failonerror="true">
-			<arg line="-source-path '${src.dir}'" />
-			<arg line="-output '${deploy.dir}/components.swf'"/>
-			<arg line="${src.dir}/CollageComponents.mxml"/>
-		</exec>
-	</target>
-	
-	<target name="release" depends="clean">
-		<property name="deploy.dir" value="./build/release/"/>
-		<exec executable="mxmlc" failonerror="true">
-			<arg line="-debug=false" />
-			<arg line="-source-path '${src.dir}'" />
-			<arg line="-output '${deploy.dir}/components.swf'"/>
-			<arg line="${src.dir}/CollageComponents.mxml"/>
-		</exec>
-	</target>
-	
-	<target name="swc-release" depends="clean">
-		<compc output="${basedir}/build/endlesspathsflex4com.swc">
+	<target name="release">
+		
+		<compc output="${deploy.dir}/endlesspathsflex4com.swc">
 			<source-path path-element="${src.dir}" /> 
 			<include-sources dir="${src.dir}/com" includes="*" />
 		</compc>

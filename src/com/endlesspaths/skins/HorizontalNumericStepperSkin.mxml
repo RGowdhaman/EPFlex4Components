@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx" width="275" height="46" >
+	<fx:Metadata>
+		[HostComponent("com.endlesspaths.components.HorizontalNumericStepper")]
+	</fx:Metadata>
+	<s:layout>
+		<s:BasicLayout />
+	</s:layout>
+	<s:states>
+		<s:State name="normal"/>
+		<s:State name="manual"/>
+	</s:states>
+	
+	
+	
+	
+	<s:Button id="decreaseButton" label="&lt;" height="100%" left="0" enabled.manual="false"  chromeColor="#3C4866" fontSize="20" skinClass.normal="com.endlesspaths.skins.HorizontalNumericStepperDecreaseButtonSkin" skinClass="com.endlesspaths.skins.HorizontalNumericStepperDecreaseButtonSkin" label.normal="●"/>
+	<s:Rect height="100%" y="1" y.normal="1" x.manual="51" left.normal="50" width.manual="100%" right.normal="50">
+		<s:fill>
+			<s:LinearGradient rotation="90">
+				<s:GradientEntry alpha="1.0" color="#FEFFCA" ratio="0"/>
+				<s:GradientEntry alpha="1.0" color="#E4E6A1" ratio="1"/>
+			</s:LinearGradient>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke alpha="0.25" caps="none" color="#000000" joints="miter" miterLimit="4" weight="2"/>
+		</s:stroke>
+	</s:Rect>
+	<s:Label id="numericLabel" height="100%" textAlign="center" verticalAlign="middle" fontSize="20" visible.manual="false" left="50" right="50" width.manual="100%" left.normal="50" right.normal="50" y.normal="0"/>
+	<s:TextInput id="numericManualEdit" height="100%" width="100%" textAlign="center" fontSize="20" visible.normal="false" left="50" right="50" />
+	<s:Button id="increaseButton" label="&gt;" height="100%" right="0" enabled.manual="false"  chromeColor="#3C4866" fontSize="20" skinClass="com.endlesspaths.skins.HorizontalNumericStepperIncreaseButtonSkin" label.normal="●" fontSize.normal="40"/>
+</s:Skin>
