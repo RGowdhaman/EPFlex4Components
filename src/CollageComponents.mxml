@@ -70,10 +70,12 @@
 		</s:ArrayList>
 	</fx:Declarations>
 	
-	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" top="10" left="10" fontSize="40"/>
-	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" top="10" right="10" fontSize="40"/>
-	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" bottom="10" left="10" fontSize="40" arrowPosition="bottom" />
-	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" bottom="10" right="10" fontSize="40" arrowPosition="bottom" />
+	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" top="10" left="10" fontSize="40">
+		<components:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
+	</components:ButtonCalloutPanel>
+	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" bottom="10" left="10" fontSize="40" arrowPosition="bottom">
+		<components:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
+	</components:ButtonCalloutPanel>
 	
 	<components:CalloutPanel id="calloutTest" skinClass="com.endlesspaths.skins.CalloutPanelSkin" visible="false">
 		<components:layout>
@@ -88,8 +90,6 @@
 		<s:Button label="Click me!"/>
 		<components:HorizontalNumericStepper valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="220" height="36"/>
 	</components:ButtonCalloutPanel>
-	
-	<components:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
 	
 	<components:ButtonCalloutPanel y="198" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="top">
 		<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
