@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:fb="http://ns.adobe.com/flashbuilder/2009" minWidth="100">
+	<fx:Metadata>
+		[HostComponent("com.endlesspaths.components.CalloutPanel")]
+	</fx:Metadata>
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="disabled" />
+	</s:states>
+	
+	<s:layout>
+		<s:BasicLayout/>
+	</s:layout>
+	
+	<fx:Script fb:purpose="styling">
+		
+		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
+			super.updateDisplayList(unscaledWidth, unscaledHeight);
+			
+			if(hostComponent.arrowPosition == "top") {
+				mainRect.top = 13;
+				mainRect.bottom = 0;
+			} else if(hostComponent.arrowPosition == "bottom") {
+				mainRect.top = 0;
+				mainRect.bottom = 14;
+			}
+		}
+		
+	</fx:Script>
+	
+	<s:Group id="arrowPathTop" visible="false" top="0">
+		<s:layout>
+			<s:BasicLayout />
+		</s:layout>
+		<s:Path data="M 13.90 0.02 L 27.78 24.07 0.02 24.07 Z " width="28" height="13" top="0" left="10">
+			<s:fill>
+				<s:SolidColor alpha="0.75" color="#444444"/>
+			</s:fill>
+		</s:Path>
+	</s:Group>
+	
+	<s:Group id="arrowPathBottom" visible="false" bottom="0">
+		<s:layout>
+			<s:BasicLayout />
+		</s:layout>
+		<s:Path data="M 13.90 0.02 L 27.78 24.07 0.02 24.07 Z " width="28" height="13" top="0" left="10" rotation="180">
+			<s:fill>
+				<s:SolidColor alpha="0.75" color="#000000"/>
+			</s:fill>
+		</s:Path>
+	</s:Group>
+	
+	<s:Group id="mainRect" minWidth="100" minHeight="15" left="0" right="0">
+		<s:layout>
+			<s:BasicLayout />
+		</s:layout>
+		<s:Rect id="backgroundRect" radiusX="6" top="0" left="0" bottom="0" right="0">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:GradientEntry alpha="0.75" color="#444444" ratio="0" />
+					<s:GradientEntry alpha="0.75" color="#333333" ratio="0.2"/>
+					<s:GradientEntry alpha="0.75" color="#2b2b2b" ratio="0.25"/>
+					<s:GradientEntry alpha="0.75" color="#000000" />
+				</s:LinearGradient>
+			</s:fill>
+			<s:filters>
+				<s:DropShadowFilter alpha="0.75" angle="45.0" blurX="15" blurY="15" color="0x000000" distance="3" hideObject="false" inner="false" knockout="false" quality="3" strength="1"/>
+			</s:filters>
+		</s:Rect>
+		<s:Scroller left="5" right="5" top="5" bottom="5" maxHeight="500" maxWidth="500">
+			<s:Group id="contentGroup" minWidth="0" minHeight="0">
+				<s:layout>
+					<s:VerticalLayout gap="8" paddingTop="8" paddingLeft="8" paddingRight="8" paddingBottom="8"/>
+				</s:layout>
+			</s:Group>
+		</s:Scroller>
+	</s:Group>
+</s:Skin>

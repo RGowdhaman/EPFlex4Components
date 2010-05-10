@@ -1,32 +1,114 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
-			   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="com.endlesspaths.components.*" backgroundColor="#EEEEEE" viewSourceURL="srcview/index.html">
+			   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="com.endlesspaths.components.*" backgroundColor="#EEEEEE" viewSourceURL="srcview/index.html" xmlns:skins="com.endlesspaths.skins.*">
 
 	<fx:Script>
 		<![CDATA[
+			import mx.controls.Alert;
 			protected function btnTest_clickHandler(event:MouseEvent):void
 			{
-				calloutTest.visible = !calloutTest.visible;
-				calloutTest.x = btnTest.x;
-				calloutTest.y = btnTest.y + btnTest.height;
+				var btn:Object = event.currentTarget;
+				/*Alert.show("Button = "+ btn);*/
 			}
 		]]>
 	</fx:Script>
 
 	<fx:Declarations>
-		<!-- Place non-visual elements (e.g., services, value objects) here -->
+		<s:BitmapImage id="bitmapImg1" source="@Embed('assets/ai_appicon-tn.gif')" />
+		<s:BitmapImage id="bitmapImg2" source="@Embed('assets/air_appicon-tn.gif')" />
+		<s:BitmapImage id="bitmapImg3" source="@Embed('assets/dw_appicon-tn.gif')" />
+		<s:BitmapImage id="bitmapImg4" source="@Embed('assets/fl_appicon-tn.gif')" />
+		<s:BitmapImage id="bitmapImg5" source="@Embed('assets/fl_player_appicon-tn.gif')" />
+		<s:BitmapImage id="bitmapImg6" source="@Embed('assets/fw_appicon-tn.gif')" />
+		<s:BitmapImage id="bitmapImg7" source="@Embed('assets/fx_appicon-tn.gif')" />
+		<s:BitmapImage id="bitmapImg8" source="@Embed('assets/ps_appicon-tn.gif')" />
+		
+		<s:ArrayList id="arrList">
+			<fx:Object label="illustrator" image="{bitmapImg1}" />
+			<fx:Object label="AIR" image="{bitmapImg2}" />
+			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="After Effects" image="{bitmapImg7}" />
+			<fx:Object label="Photoshop" image="{bitmapImg1}" />
+			<fx:Object label="illustrator" image="{bitmapImg1}" />
+			<fx:Object label="AIR" image="{bitmapImg2}" />
+			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="After Effects" image="{bitmapImg7}" />
+			<fx:Object label="Photoshop" image="{bitmapImg1}" />
+			<fx:Object label="illustrator" image="{bitmapImg1}" />
+			<fx:Object label="AIR" image="{bitmapImg2}" />
+			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="After Effects" image="{bitmapImg7}" />
+			<fx:Object label="Photoshop" image="{bitmapImg1}" />
+			<fx:Object label="illustrator" image="{bitmapImg1}" />
+			<fx:Object label="AIR" image="{bitmapImg2}" />
+			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="After Effects" image="{bitmapImg7}" />
+			<fx:Object label="Photoshop" image="{bitmapImg1}" />
+			<fx:Object label="illustrator" image="{bitmapImg1}" />
+			<fx:Object label="AIR" image="{bitmapImg2}" />
+			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="After Effects" image="{bitmapImg7}" />
+			<fx:Object label="Photoshop" image="{bitmapImg1}" />
+			<fx:Object label="illustrator" image="{bitmapImg1}" />
+			<fx:Object label="AIR" image="{bitmapImg2}" />
+			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="After Effects" image="{bitmapImg7}" />
+			<fx:Object label="Photoshop" image="{bitmapImg1}" />
+		</s:ArrayList>
 	</fx:Declarations>
 	
-	<s:Button id="btnTest" label="Click me!" click="btnTest_clickHandler(event)"  x="10" y="10" fontSize="40" width="297" height="95"/>
+	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" top="10" left="10" fontSize="40"/>
+	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" top="10" right="10" fontSize="40"/>
+	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" bottom="10" left="10" fontSize="40" arrowPosition="bottom" />
+	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" bottom="10" right="10" fontSize="40" arrowPosition="bottom" />
 	
 	<components:CalloutPanel id="calloutTest" skinClass="com.endlesspaths.skins.CalloutPanelSkin" visible="false">
 		<components:layout>
-			<s:VerticalLayout/>
+			<s:VerticalLayout />
 		</components:layout>
 		<s:VGroup gap="8" paddingLeft="8" paddingRight="8" paddingTop="8" paddingBottom="8">
-			<components:HorizontalNumericStepper valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="300" height="46"/>
+			<components:HorizontalNumericStepper labelFontSize="30" valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="300" height="46"/>
 		</s:VGroup>
 	</components:CalloutPanel>
+	
+	<components:ButtonCalloutPanel y="234" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" horizontalCenter="0">
+		<s:Button label="Click me!"/>
+		<components:HorizontalNumericStepper valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="220" height="36"/>
+	</components:ButtonCalloutPanel>
+	
+	<components:ButtonCalloutPanel y="198" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="top">
+		<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
+			<s:layout>
+				<s:TileLayout horizontalGap="8" verticalGap="8" requestedColumnCount="5" />
+			</s:layout>
+		</s:List>
+	</components:ButtonCalloutPanel>
+	
+	<components:ButtonCalloutPanel bottom="50" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="bottom">
+		<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
+			<s:layout>
+				<s:TileLayout horizontalGap="8" verticalGap="8" requestedColumnCount="5" />
+			</s:layout>
+		</s:List>
+	</components:ButtonCalloutPanel>
 	
 </s:Application>

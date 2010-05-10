@@ -1,26 +1,22 @@
 package com.endlesspaths.components
 {
 	import flash.events.MouseEvent;
-	
+	import flash.display.BitmapData;
+	import mx.utils.ColorUtil;
+	import spark.primitives.Rect;
 	import spark.components.Group;
 	import spark.components.SkinnableContainer;
 	import spark.components.supportClasses.SkinnableComponent;
 	
-	public class CalloutPanel extends SkinnableContainer
+	public class ColorSelector extends SkinnableContainer
 	{
 		[Bindable]
-		public var arrowPosition:String = "top";
+		public var selectedColor:Number = 0x00F300;
 		
-		[SkinPart(required=false)]
-		public var arrowPathTop:Group;
+		[SkinPart(required="true")]
+		public var colorBox:Group;
 		
-		[SkinPart(required=false)]
-		public var arrowPathBottom:Group;
-		
-		[SkinPart(required=false)]
-		public var mainRect:Group;
-		
-		public function CalloutPanel() {
+		public function ColorSelector() {
 			super();
 		}
 		
@@ -31,16 +27,8 @@ package com.endlesspaths.components
 		override protected function partAdded(partName:String, instance:Object):void {
 			super.partAdded(partName, instance);
 			
-			if (instance == contentGroup) {
-				// TODO: Maybe something goes here.
-			} else if(instance == arrowPathBottom) {
-				if(arrowPosition == "bottom") {
-					arrowPathBottom.visible = true;
-				}
-			} else if (instance == arrowPathTop) {
-				if(arrowPosition == "top") {
-					arrowPathTop.visible = true;
-				}
+			if (instance == colorBox) {
+				colorBox.addEventListener(MouseEvent.CLICK, colorBox_Click);
 			}
 		}
 		
@@ -50,6 +38,11 @@ package com.endlesspaths.components
 			if (instance == contentGroup) {
 				// TODO: Maybe something goes here.
 			}
+		}
+		
+		private function colorBox_Click(event:MouseEvent):void {
+			var spr:BitmapData = colorBox as BitmapData;
+			selectedColor = spr.getPixel(event.localX, event.localY);
 		}
 	}
 }

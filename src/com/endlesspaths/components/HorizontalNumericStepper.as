@@ -1,5 +1,6 @@
 package com.endlesspaths.components
 {
+	import mx.events.FlexMouseEvent;
 	import flash.events.MouseEvent;
 	import flash.events.Event;
 	import mx.events.FlexEvent;
@@ -32,6 +33,10 @@ package com.endlesspaths.components
 		
 		[SkinPart(required="true")]
 		public var numericManualEdit:TextInput;
+		
+		[Bindable]
+		[Inspectable(name="Label Font Size", category="Styles", defaultValue=20, type="Number")]
+		public var labelFontSize:Number;
 
 		public function HorizontalNumericStepper() {
 			super();
@@ -118,6 +123,9 @@ package com.endlesspaths.components
 			
 			_isManualEdit = true;
 			numericManualEdit.text = ""+ numericValue;
+			numericManualEdit.height = numericLabel.height;
+			numericManualEdit.width = numericLabel.width;	
+			numericManualEdit.setFocus();
 			
 			invalidateSkinState();
 		}
@@ -130,6 +138,8 @@ package com.endlesspaths.components
 			} catch(error:Error) {
 				
 			}
+			
+			this.removeEventListener(FlexMouseEvent.MOUSE_DOWN_OUTSIDE, numericManualEdit_Click);
 			
 			updateLabel();
 			invalidateSkinState();

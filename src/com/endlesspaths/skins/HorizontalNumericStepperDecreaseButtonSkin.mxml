@@ -51,7 +51,7 @@
 			</s:LinearGradient>
 		</s:fill>
 		<s:filters>
-			<s:BevelFilter angle="45.0" blurX="2" blurX.down="6" blurY="2" blurY.down="6" distance="2" highlightAlpha="0.75" highlightAlpha.over="0.9" highlightAlpha.down="0.5" highlightColor="0xFFFFFF" knockout="false" quality="3" shadowAlpha="0.75" shadowAlpha.over="0.5" shadowColor="0x000000" strength="1" type="inner"/>
+			<s:BevelFilter angle="45.0" blurX="2" blurX.down="6" blurY="2" blurY.down="6" distance="1" highlightAlpha="0.75" highlightAlpha.over="0.9" highlightAlpha.down="0.5" highlightColor="0xFFFFFF" knockout="false" quality="3" shadowAlpha="0.75" shadowAlpha.over="0.5" shadowColor="0x000000" strength="1" type="inner"/>
 		</s:filters>
 		<s:stroke>
 			<s:SolidColorStroke caps="none" color="#2B4381" joints="miter" miterLimit="4" weight="1"/>
