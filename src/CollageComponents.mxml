@@ -25,54 +25,48 @@
 		<s:BitmapImage id="bitmapImg8" source="@Embed('assets/ps_appicon-tn.gif')" />
 		
 		<s:ArrayList id="arrList">
-			<fx:Object label="illustrator" image="{bitmapImg1}" />
-			<fx:Object label="AIR" image="{bitmapImg2}" />
-			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
-			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
-			<fx:Object label="Flash Player" image="{bitmapImg5}" />
-			<fx:Object label="Fireworks" image="{bitmapImg6}" />
-			<fx:Object label="After Effects" image="{bitmapImg7}" />
-			<fx:Object label="Photoshop" image="{bitmapImg1}" />
-			<fx:Object label="illustrator" image="{bitmapImg1}" />
-			<fx:Object label="AIR" image="{bitmapImg2}" />
-			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
-			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
-			<fx:Object label="Flash Player" image="{bitmapImg5}" />
-			<fx:Object label="Fireworks" image="{bitmapImg6}" />
-			<fx:Object label="After Effects" image="{bitmapImg7}" />
-			<fx:Object label="Photoshop" image="{bitmapImg1}" />
-			<fx:Object label="illustrator" image="{bitmapImg1}" />
-			<fx:Object label="AIR" image="{bitmapImg2}" />
-			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
-			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
-			<fx:Object label="Flash Player" image="{bitmapImg5}" />
-			<fx:Object label="Fireworks" image="{bitmapImg6}" />
-			<fx:Object label="After Effects" image="{bitmapImg7}" />
-			<fx:Object label="Photoshop" image="{bitmapImg1}" />
-			<fx:Object label="illustrator" image="{bitmapImg1}" />
-			<fx:Object label="AIR" image="{bitmapImg2}" />
-			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
-			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
-			<fx:Object label="Flash Player" image="{bitmapImg5}" />
-			<fx:Object label="Fireworks" image="{bitmapImg6}" />
-			<fx:Object label="After Effects" image="{bitmapImg7}" />
-			<fx:Object label="Photoshop" image="{bitmapImg1}" />
-			<fx:Object label="illustrator" image="{bitmapImg1}" />
-			<fx:Object label="AIR" image="{bitmapImg2}" />
-			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
-			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
-			<fx:Object label="Flash Player" image="{bitmapImg5}" />
-			<fx:Object label="Fireworks" image="{bitmapImg6}" />
-			<fx:Object label="After Effects" image="{bitmapImg7}" />
-			<fx:Object label="Photoshop" image="{bitmapImg1}" />
-			<fx:Object label="illustrator" image="{bitmapImg1}" />
-			<fx:Object label="AIR" image="{bitmapImg2}" />
-			<fx:Object label="Dreamweaver" image="{bitmapImg3}" />
-			<fx:Object label="Flash Pro" image="{bitmapImg4}" />
-			<fx:Object label="Flash Player" image="{bitmapImg5}" />
-			<fx:Object label="Fireworks" image="{bitmapImg6}" />
-			<fx:Object label="After Effects" image="{bitmapImg7}" />
-			<fx:Object label="Photoshop" image="{bitmapImg1}" />
+			<fx:Object label="1 Illustrator" image="{bitmapImg1}" />
+			<fx:Object label="1 AIR" image="{bitmapImg2}" />
+			<fx:Object label="1 Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="1 Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="1 Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="1 Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="1 After Effects" image="{bitmapImg7}" />
+			<fx:Object label="1 Photoshop" image="{bitmapImg1}" />
+			<fx:Object label="2 Illustrator" image="{bitmapImg1}" />
+			<fx:Object label="2 AIR" image="{bitmapImg2}" />
+			<fx:Object label="2 Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="2 Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="2 Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="2 Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="2 After Effects" image="{bitmapImg7}" />
+			<fx:Object label="2 Photoshop" image="{bitmapImg1}" />
+			<fx:Object label="3 Illustrator" image="{bitmapImg1}" />
+			<fx:Object label="3 AIR" image="{bitmapImg2}" />
+			<fx:Object label="3 Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="3 Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="3 Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="3 Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="3 After Effects" image="{bitmapImg7}" />
+			<fx:Object label="3 Photoshop" image="{bitmapImg1}" />
+			                   
+			<fx:Object label="4 Illustrator" image="{bitmapImg1}" />
+			<fx:Object label="4 AIR" image="{bitmapImg2}" />
+			<fx:Object label="4 Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="4 Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="4 Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="4 Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="4 After Effects" image="{bitmapImg7}" />
+			<fx:Object label="4 Photoshop" image="{bitmapImg1}" />
+			                   
+			<fx:Object label="5 Illustrator" image="{bitmapImg1}" />
+			<fx:Object label="5 AIR" image="{bitmapImg2}" />
+			<fx:Object label="5 Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="5 Flash Pro" image="{bitmapImg4}" />
+			<fx:Object label="5 Flash Player" image="{bitmapImg5}" />
+			<fx:Object label="5 Fireworks" image="{bitmapImg6}" />
+			<fx:Object label="5 After Effects" image="{bitmapImg7}" />
+			<fx:Object label="5 Photoshop" image="{bitmapImg1}" />
 		</s:ArrayList>
 	</fx:Declarations>
 	
@@ -94,6 +88,8 @@
 		<s:Button label="Click me!"/>
 		<components:HorizontalNumericStepper valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="220" height="36"/>
 	</components:ButtonCalloutPanel>
+	
+	<components:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
 	
 	<components:ButtonCalloutPanel y="198" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="top">
 		<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
