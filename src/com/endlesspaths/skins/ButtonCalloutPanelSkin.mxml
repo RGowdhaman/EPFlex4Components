@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="com.endlesspaths.components.*">
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:ep="com.endlesspaths.components.*">
 	<fx:Metadata>
 			[HostComponent("com.endlesspaths.components.ButtonCalloutPanel")]
 		</fx:Metadata>
@@ -22,12 +22,12 @@
 	</s:transitions>
 	<s:Button id="theButton" label="{hostComponent.label}" chromeColor="#3333333" color="#eeeeee" />
 	<s:PopUpAnchor id="calloutPanel" displayPopUp.normal="false" displayPopUp.open="true" includeIn="open" left="0" right="0" top="0" bottom="0" itemDestructionPolicy="auto" popUpPosition="below" popUpWidthMatchesAnchorWidth="false" popUpHeightMatchesAnchorHeight="false">
-		<components:CalloutPanel skinClass="com.endlesspaths.skins.CalloutPanelSkin" arrowPosition="{hostComponent.arrowPosition}">
+		<ep:CalloutPanel skinClass="com.endlesspaths.skins.CalloutPanelSkin" arrowPosition="{hostComponent.arrowPosition}">
 			<s:Group id="contentGroup">
 				<s:layout>
 					<s:VerticalLayout gap="8" />
 				</s:layout>
 			</s:Group>
-		</components:CalloutPanel>
+		</ep:CalloutPanel>
 	</s:PopUpAnchor>
 </s:Skin>

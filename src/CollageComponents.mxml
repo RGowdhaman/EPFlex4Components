@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
 			   xmlns:s="library://ns.adobe.com/flex/spark" 
-			   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:components="com.endlesspaths.components.*" backgroundColor="#EEEEEE" viewSourceURL="srcview/index.html" xmlns:skins="com.endlesspaths.skins.*">
+			   xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:ep="com.endlesspaths.components.*" backgroundColor="#EEEEEE" viewSourceURL="srcview/index.html" xmlns:skins="com.endlesspaths.skins.*">
 
 	<fx:Script>
 		<![CDATA[
@@ -27,7 +27,7 @@
 		<s:ArrayList id="arrList">
 			<fx:Object label="1 Illustrator" image="{bitmapImg1}" />
 			<fx:Object label="1 AIR" image="{bitmapImg2}" />
-			<fx:Object label="1 Dreamweaver" image="{bitmapImg3}" />
+			<fx:Object label="1 Dreamweaver 2" image="{bitmapImg3}" />
 			<fx:Object label="1 Flash Pro" image="{bitmapImg4}" />
 			<fx:Object label="1 Flash Player" image="{bitmapImg5}" />
 			<fx:Object label="1 Fireworks" image="{bitmapImg6}" />
@@ -70,41 +70,43 @@
 		</s:ArrayList>
 	</fx:Declarations>
 	
-	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" top="10" left="10" fontSize="40">
-		<components:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
-	</components:ButtonCalloutPanel>
-	<components:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" bottom="10" left="10" fontSize="40" arrowPosition="bottom">
-		<components:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
-	</components:ButtonCalloutPanel>
+	<ep:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" top="10" left="10" fontSize="40">
+		<ep:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
+	</ep:ButtonCalloutPanel>
+	<ep:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" bottom="10" left="10" fontSize="40" arrowPosition="bottom">
+		<ep:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
+	</ep:ButtonCalloutPanel>
 	
-	<components:CalloutPanel id="calloutTest" skinClass="com.endlesspaths.skins.CalloutPanelSkin" visible="false">
-		<components:layout>
+	<ep:CalloutPanel id="calloutTest" skinClass="com.endlesspaths.skins.CalloutPanelSkin" visible="false">
+		<ep:layout>
 			<s:VerticalLayout />
-		</components:layout>
+		</ep:layout>
 		<s:VGroup gap="8" paddingLeft="8" paddingRight="8" paddingTop="8" paddingBottom="8">
-			<components:HorizontalNumericStepper labelFontSize="30" valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="300" height="46"/>
+			<ep:HorizontalNumericStepper labelFontSize="30" valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="300" height="46"/>
 		</s:VGroup>
-	</components:CalloutPanel>
+	</ep:CalloutPanel>
 	
-	<components:ButtonCalloutPanel y="234" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" horizontalCenter="0">
+	<ep:ButtonCalloutPanel y="264" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" horizontalCenter="0">
 		<s:Button label="Click me!"/>
-		<components:HorizontalNumericStepper valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="220" height="36"/>
-	</components:ButtonCalloutPanel>
+		<ep:HorizontalNumericStepper valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="220" height="36"/>
+	</ep:ButtonCalloutPanel>
 	
-	<components:ButtonCalloutPanel y="198" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="top">
+	<ep:ButtonCalloutPanel y="198" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="top">
+		<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
+			<s:layout>
+				<s:TileLayout horizontalGap="8" verticalGap="8" requestedColumnCount="4" />
+			</s:layout>
+		</s:List>
+	</ep:ButtonCalloutPanel>
+	
+	<ep:ButtonCalloutPanel bottom="50" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="bottom">
 		<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
 			<s:layout>
 				<s:TileLayout horizontalGap="8" verticalGap="8" requestedColumnCount="5" />
 			</s:layout>
 		</s:List>
-	</components:ButtonCalloutPanel>
+	</ep:ButtonCalloutPanel>
 	
-	<components:ButtonCalloutPanel bottom="50" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="bottom">
-		<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
-			<s:layout>
-				<s:TileLayout horizontalGap="8" verticalGap="8" requestedColumnCount="5" />
-			</s:layout>
-		</s:List>
-	</components:ButtonCalloutPanel>
+	<ep:ColorSelector y="100" horizontalCenter="0" skinClass="com.endlesspaths.skins.ColorSelectorSkin" />
 	
 </s:Application>

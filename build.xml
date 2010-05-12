@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="Collage" default="release">
+<project name="Endless Paths Flex 4 Components" default="debug">
 	<property file="build.properties" />
 	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
 	
@@ -11,7 +11,16 @@
 	</target>
 	
 	<target name="debug">
-		<mxmlc file="${src.dir}/CollageComponents.mxml" output="${deploy.dir}/debug/test.swf" debug="true" incremental="true">
+		<exec executable="./fcshctl-mxmlc" failonerror="true">
+			<arg line="-debug=false" />
+			<arg line="-source-path '${src.dir}'" />
+			<arg line="-output '${deploy.dir}/debug/test.swf'"/>
+			<arg line="${src.dir}/CollageComponents.mxml"/>
+		</exec>
+	</target>
+	
+	<target name="debug-old">
+		<mxmlc file="${src.dir}/CollageComponents.mxml" output="${deploy.dir}/debug/test.swf" debug="true" incremental="true" keep-generated-actionscript="true">
 			<source-path path-element="${src.dir}" />
 		</mxmlc>
 		<copy file="${src.dir}/test.html" tofile="${deploy.dir}/debug/test.html" />
