@@ -27,6 +27,18 @@ package com.endlesspaths.components
 			super();
 		}
 		
+		public function open():void {
+			_isOpen = true;
+			
+			invalidateSkinState();
+		}
+		
+		public function close():void {
+			_isOpen = false;
+			
+			invalidateSkinState();
+		}
+		
 		override protected function getCurrentSkinState():String {
 			return (_isOpen == true ? "open" : "normal");
 		}
