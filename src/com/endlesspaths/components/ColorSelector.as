@@ -1,6 +1,7 @@
 package com.endlesspaths.components
 {
 	import flash.display.Stage;
+	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
 	import flash.display.BitmapData;
 	import flash.ui.Mouse;
@@ -27,7 +28,6 @@ package com.endlesspaths.components
 		[Bindable]
 		public var selectedColorAsHex:String = "00F300";
 		
-		
 		[Bindable]
 		public var selectedHue:Number = 0x00F300;
 		
@@ -46,8 +46,8 @@ package com.endlesspaths.components
 		[SkinPart(required=true)]
 		public var colorHues:Group;
 		
-		private var prevMouseX:Number;
-		private var prevMouseY:Number;
+		[Bindable]public var localMouseX:Number;
+		[Bindable]public var localMouseY:Number;
 		
 		public function ColorSelector() {
 			super();
@@ -122,26 +122,63 @@ package com.endlesspaths.components
 		}
 		
 		private function updateSelectedColor(x:uint, y:uint):void {
+			localMouseX = x;
+			localMouseY = y;
 			var bmap:BitmapData = new BitmapData(colorBox.width, colorBox.height, false);
 			bmap.draw(colorBox);
 			
-			colorBoxSelector.y = y + cursorOffsetY;
-			colorBoxSelector.x = x + cursorOffsetX;
+			colorBoxSelector.y = y;
+			colorBoxSelector.x = x;
 			
-			selectedColor = bmap.getPixel(colorBoxSelector.x, colorBoxSelector.y);
+			updateSelectedColorValues(bmap.getPixel(colorBoxSelector.x, colorBoxSelector.y));
+		}
+		
+		private function updateSelectedColorValues(color:Number):void {
+			selectedColor = color;
 			selectedColor_Red = (selectedColor & 0xff0000) >> 16;
 			selectedColor_Green = (selectedColor & 0x00ff00) >> 8;
 			selectedColor_Blue = (selectedColor & 0x0000ff);
 			selectedColorAsHex = selectedColor.toString(16).toUpperCase();
 		}
 		
-		private function updateSelectedHue(x:uint, y:uint):void {
+		public function updateSelectedHue(x:uint, y:uint):void {
+			localMouseX = x;
+			localMouseY = y;
 			var bmap:BitmapData = new BitmapData(colorHues.width, colorHues.height, false);
 			bmap.draw(colorHues);
 			
 			selectedHue = bmap.getPixel(x, y);
-			updateSelectedColor(colorBox.width, 0);
+			updateSelectedColor(200, 1);
 			colorBoxSelector.visible = true;
+		}
+		
+		public function setColorAndHue(color:Number):void {
+			updateSelectedColorValues(color);
+			selectedHue = color;
+		}
+		
+		private function rgbToHSV(r:Number, g:Number, b:Number):Number {
+			r /= 255;
+			g /= 255;
+			b /= 255;
+			
+			var h:Number,s:Number,
+				min:Number = Math.min(Math.min(r,g),b),
+				max:Number = Math.max(Math.max(r,g),b),
+				delta:Number = max-min;
+			
+			switch (max) {
+				case min: h=0; break;
+				case r:	  h=60*(g-b)/delta;
+					if (g<b) {
+						h+=360;
+					}
+					break;
+				case g:	  h=(60*(b-r)/delta)+120; break;
+				case b:	  h=(60*(r-g)/delta)+240; break;
+			}
+			
+			return h;
 		}
 		
 		private function colorHues_Click(event:MouseEvent):void {
