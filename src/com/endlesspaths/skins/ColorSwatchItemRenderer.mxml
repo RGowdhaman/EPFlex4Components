@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:ItemRenderer 
+	 xmlns:fx="http://ns.adobe.com/mxml/2009"
+	 xmlns:s="library://ns.adobe.com/flex/spark"
+	 xmlns:mx="library://ns.adobe.com/flex/mx"
+	 autoDrawBackground="true" click="itemRenderer_clickHandler(event);">
+	<fx:Script>
+	<![CDATA[
+	
+	import mx.events.ItemClickEvent;
+	
+	protected function itemRenderer_clickHandler(evt:MouseEvent):void {
+		var e:ItemClickEvent = new ItemClickEvent(ItemClickEvent.ITEM_CLICK, true);
+		e.item = data;
+		e.index = itemIndex;
+		dispatchEvent(e);
+	}
+	
+	]]>
+	</fx:Script>
+	<s:Rect width="20" height="20">
+		<s:fill>
+			<s:SolidColor color="{data.color}" />
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#999999" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Rect>
+</s:ItemRenderer>

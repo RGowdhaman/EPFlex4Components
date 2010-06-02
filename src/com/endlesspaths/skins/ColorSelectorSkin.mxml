@@ -1,89 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx" width="360">
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx" minWidth="280" minHeight="200">
 	<fx:Metadata>
 		[HostComponent("com.endlesspaths.components.ColorSelector")]
 	</fx:Metadata>
+	
 	<s:states>
 		<s:State name="normal" />
 		<s:State name="disabled" />
 	</s:states>	
 	
 	<s:layout>
-		<s:BasicLayout />
+		<s:HorizontalLayout />
 	</s:layout>
+	
+	<s:Group width="100%" height="100%">
+		<s:layout>
+			<s:VerticalLayout />
+		</s:layout>
 		
-	<s:Group width="250" height="250" top="0" left="0" clipAndEnableScrolling="true">
-		<s:Group id="colorBox" top="1" left="1" right="1" bottom="1">
+		<s:Group width="100%" height="100%" top="0" left="0" clipAndEnableScrolling="true">
+			<s:Group id="colorBox" top="1" left="1" right="1" bottom="1">
+				<s:Rect width="100%" height="100%">
+					<s:fill>
+						<s:SolidColor id="colorBoxFill" color="@{hostComponent.selectedHue}"/>
+					</s:fill>
+				</s:Rect>
+				<s:Rect blendMode="lighten" width="100%" height="100%">
+					<s:fill>
+						<s:LinearGradient rotation="0">
+							<s:GradientEntry alpha="1.0" color="#FFFFFF" ratio="0"/>
+							<s:GradientEntry alpha="0.0" color="#FFFFFF" ratio="1"/>
+						</s:LinearGradient>
+					</s:fill>
+				</s:Rect>
+				<s:Rect blendMode="multiply" width="100%" height="100%">
+					<s:fill>
+						<s:LinearGradient rotation="90">
+							<s:GradientEntry alpha="0.0" color="#FFFFFF" ratio="0"/>
+							<s:GradientEntry alpha="1.0" color="#000000" ratio="1"/>
+						</s:LinearGradient>
+					</s:fill>
+				</s:Rect>
+			</s:Group>
+		
+			<s:Group id="colorBoxSelector">
+				<s:BitmapImage source="{hostComponent.colorSelectorCursorImage}" top="-5" left="-5"/>
+			</s:Group>
+		
 			<s:Rect width="100%" height="100%">
-				<s:fill>
-					<s:SolidColor color="{hostComponent.selectedHue}"/>
-				</s:fill>
-			</s:Rect>
-			<s:Rect blendMode="lighten" width="100%" height="100%">
-				<s:fill>
-					<s:LinearGradient rotation="0">
-						<s:GradientEntry alpha="1.0" color="#FFFFFF" ratio="0"/>
-						<s:GradientEntry alpha="0.0" color="#FFFFFF" ratio="1"/>
-					</s:LinearGradient>
-				</s:fill>
-			</s:Rect>
-			<s:Rect blendMode="multiply" width="100%" height="100%">
-				<s:fill>
-					<s:LinearGradient rotation="90">
-						<s:GradientEntry alpha="0.0" color="#FFFFFF" ratio="0"/>
-						<s:GradientEntry alpha="1.0" color="#000000" ratio="1"/>
-					</s:LinearGradient>
-				</s:fill>
+				<s:stroke>
+					<s:SolidColorStroke caps="none" color="#000000" joints="miter" miterLimit="4" weight="1"/>
+				</s:stroke>
 			</s:Rect>
 		</s:Group>
 		
-		<s:Group id="colorBoxSelector">
-			<s:BitmapImage source="{hostComponent.colorSelectorCursorImage}" x="248" y="0" />
+		<s:Group width="100%" height="30">
+			<s:Group id="colorHues" top="1" left="1" right="1" bottom="1">
+				<s:Rect width="100%" height="100%">
+					<s:fill>
+						<s:LinearGradient rotation="180">
+							<s:GradientEntry color="#ff0000" ratio="0.0"/>
+							<s:GradientEntry color="#ff00f8" ratio="0.16"/>
+							<s:GradientEntry color="#0311ff" ratio="0.32"/>
+							<s:GradientEntry color="#00ffff" ratio="0.48"/>
+							<s:GradientEntry color="#00ff00" ratio="0.64"/>
+							<s:GradientEntry color="#fff600" ratio="0.80"/>
+							<s:GradientEntry color="#ff0000" ratio="1.0"/>
+						</s:LinearGradient>
+					</s:fill>
+				</s:Rect>
+			</s:Group>
+			<s:Rect width="100%" height="100%">
+				<s:stroke>
+					<s:SolidColorStroke caps="none" color="#000000" joints="miter" miterLimit="4" weight="1"/>
+				</s:stroke>
+			</s:Rect>
 		</s:Group>
-		
-		<s:Rect width="100%" height="100%">
+	</s:Group>
+	
+	<s:Group>
+		<s:layout>
+			<s:VerticalLayout gap="5" />
+		</s:layout>
+	
+		<s:Rect width="60" height="60" right="40" top="0">
+			<s:fill>
+				<s:SolidColor color="@{hostComponent.selectedColor}" />
+			</s:fill>
 			<s:stroke>
 				<s:SolidColorStroke caps="none" color="#000000" joints="miter" miterLimit="4" weight="1"/>
 			</s:stroke>
 		</s:Rect>
-	</s:Group>
-	
-	<s:TextInput id="colorAsHex" text="{hostComponent.selectedColorAsHex}" editable="false" top="70" right="40" width="60" maxChars="6" restrict="0-9A-Fa-f" />
-	
-	<s:TextInput id="colorPart_Red" text="{hostComponent.selectedColor_Red}" editable="false" top="100" right="40" width="30" maxChars="3" restrict="0-9" />
-	<s:TextInput id="colorPart_Green" text="{hostComponent.selectedColor_Green}" editable="false" top="130" right="40" width="30" maxChars="3" restrict="0-9" />
-	<s:TextInput id="colorPart_Blue" text="{hostComponent.selectedColor_Blue}" editable="false" top="160" right="40" width="30" maxChars="3" restrict="0-9" />
-	
-	<s:Rect width="60" height="60" right="40" top="0">
-		<s:fill>
-			<s:SolidColor color="{hostComponent.selectedColor}" />
-		</s:fill>
-		<s:stroke>
-			<s:SolidColorStroke caps="none" color="#000000" joints="miter" miterLimit="4" weight="1"/>
-		</s:stroke>
-	</s:Rect>
-	
-	<s:Group width="30" top="0" right="0" bottom="0">
-		<s:Group id="colorHues" top="1" left="1" right="1" bottom="1">
-			<s:Rect width="100%" height="100%">
-				<s:fill>
-					<s:LinearGradient rotation="90">
-						<s:GradientEntry color="#ff0000" ratio="0.0"/>
-						<s:GradientEntry color="#ff00f8" ratio="0.16"/>
-						<s:GradientEntry color="#0311ff" ratio="0.32"/>
-						<s:GradientEntry color="#00ffff" ratio="0.48"/>
-						<s:GradientEntry color="#00ff00" ratio="0.64"/>
-						<s:GradientEntry color="#fff600" ratio="0.80"/>
-						<s:GradientEntry color="#ff0000" ratio="1.0"/>
-					</s:LinearGradient>
-				</s:fill>
-			</s:Rect>
+		
+		<s:Group>
+			<s:layout>
+				<s:HorizontalLayout gap="5" />
+			</s:layout>
+			<s:Label text="R:" />
+			<s:TextInput id="colorPart_Red" text="{hostComponent.selectedColor_Red}" editable="false" width="30" maxChars="3" restrict="0-9" />
 		</s:Group>
-		<s:Rect width="100%" height="100%">
-			<s:stroke>
-				<s:SolidColorStroke caps="none" color="#000000" joints="miter" miterLimit="4" weight="1"/>
-			</s:stroke>
-		</s:Rect>
+		<s:Group>
+			<s:layout>
+				<s:HorizontalLayout gap="5" />
+			</s:layout>
+			<s:Label text="R:" />
+			<s:TextInput id="colorPart_Green" text="{hostComponent.selectedColor_Green}" editable="false" width="30" maxChars="3" restrict="0-9" />
+		</s:Group>
+		<s:Group>
+			<s:layout>
+				<s:HorizontalLayout gap="5" />
+			</s:layout>
+			<s:Label text="R:" />
+			<s:TextInput id="colorPart_Blue" text="{hostComponent.selectedColor_Blue}" editable="false" width="30" maxChars="3" restrict="0-9" />
+		</s:Group>
+		
+		<s:Group>
+			<s:layout>
+				<s:HorizontalLayout gap="5" />
+			</s:layout>
+			<s:Label text="#:" />
+			<s:TextInput id="colorAsHex" text="{hostComponent.selectedColorAsHex}" editable="false" width="60" maxChars="6" restrict="0-9A-Fa-f" />
+		</s:Group>
+		<!-- <s:TextInput text="{hostComponent.localMouseX}, {hostComponent.localMouseY}" /> -->
 	</s:Group>
-	
 </s:Skin>

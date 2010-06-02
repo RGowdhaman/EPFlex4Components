@@ -2,20 +2,27 @@
 <project name="Endless Paths Flex 4 Components" default="debug">
 	<property file="build.properties" />
 	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
-	
+
 	<target name="release">
-		<compc output="${deploy.dir}/endlesspathsflex4com.swc">
+		<!-- <compc output="${deploy.dir}/endlesspathsflex4com.swc">
 			<source-path path-element="${src.dir}" /> 
 			<include-sources dir="${src.dir}/com" includes="*" />
-		</compc>
+		</compc> -->
+		<exec executable="fcshctl" failonerror="true">
+			<arg line="compc" />
+			<arg line="-debug=true" />
+			<arg line="-source-path '${basedir}/${src.dir}'" />
+			<arg line="-include-sources '${basedir}/${src.dir}'" />
+			<arg line="-output '${basedir}/${deploy.dir}/endlesspathsflex4com.swc'"/>
+		</exec>
 	</target>
 	
 	<target name="debug">
-		<exec executable="./fcshctl-mxmlc" failonerror="true">
+		<exec executable="fcshctl-mxmlc" failonerror="true">
 			<arg line="-debug=false" />
-			<arg line="-source-path '${src.dir}'" />
-			<arg line="-output '${deploy.dir}/debug/test.swf'"/>
-			<arg line="${src.dir}/CollageComponents.mxml"/>
+			<arg line="-source-path '${basedir}/${src.dir}'" />
+			<arg line="-output '${basedir}/${deploy.dir}/debug/test.swf'"/>
+			<arg line="${basedir}/${src.dir}/CollageComponents.mxml"/>
 		</exec>
 	</target>
 	

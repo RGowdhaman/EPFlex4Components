@@ -11,6 +11,9 @@ package com.endlesspaths.components
 		[Bindable]
 		public var arrowPosition:String = "top";
 		
+		[Bindable]
+		public var title:String = "";
+		
 		[SkinPart(required=false)]
 		public var arrowPathTop:Group;
 		
