@@ -16,6 +16,8 @@ package com.endlesspaths.components
 	import mx.events.FlexEvent;
 	import spark.events.IndexChangeEvent;
 	
+	import com.endlesspaths.skins.*;
+	
 	public class TextFlowEditor extends SkinnableComponent {
 		[Bindable]public var selectionAlignment:Number = 0;
 		[Bindable]public var selectionFontFamily:String = "Arial";
@@ -29,6 +31,8 @@ package com.endlesspaths.components
 		
 		public function TextFlowEditor() {
 			super();
+			
+			setStyle("skinClass", Class(TextFlowEditorSkin));
 			
 			addEventListener( PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged);
 		}

@@ -201,6 +201,10 @@ CalloutPanel {
 	skinClass: ClassReference("com.endlesspaths.skins.CalloutPanelBlackHUDSkin");
 }
 
+GradientSelectorThumb {
+	skinClass: ClassReference("com.endlesspaths.skins.GradientSelectorThumb");
+}
+
 global
 {
     /* Looks */

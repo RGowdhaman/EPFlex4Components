@@ -3,7 +3,12 @@ package com.endlesspaths.components
 	import mx.core.IFlexDisplayObject;
 	import flash.events.Event;
 	import mx.events.FlexMouseEvent;
+	import flash.events.MouseEvent;
 	import spark.components.PopUpAnchor;
+	import mx.controls.Alert;
+	import mx.events.ItemClickEvent;
+	
+	import com.endlesspaths.skins.*;
 	
 	public class AutoPopUpAnchor extends PopUpAnchor
 	{
@@ -51,16 +56,21 @@ package com.endlesspaths.components
 			// cache the reference for future use.
 			_previousPopUp = popUp;
 			
+			popUp.addEventListener(ItemClickEvent.ITEM_CLICK, popUp_CancelClicks, false);
 			popUp.addEventListener(FlexMouseEvent.MOUSE_DOWN_OUTSIDE, popUp_MouseDownOutside, false, POPUP_MAX - _childrenPopUpsOpen);
 			popUp.addEventListener(POPUP_OPENED, childPopUpOpened);
 			popUp.addEventListener(POPUP_CLOSED, childPopUpClosed);
 		}
 		
 		private function popUp_MouseDownOutside(event:FlexMouseEvent):void {
-			trace('open: '+ popUpOpen +', children: '+ _childrenPopUpsOpen);
 			if(popUpOpen == true && _childrenPopUpsOpen < 1) {
 				popUpOpen = false;
 			}
+		}
+		
+		private function popUp_CancelClicks(event:Event):void {
+			event.stopImmediatePropagation();
+			event.preventDefault();
 		}
 		
 		private function popUpRebindEvent():void {

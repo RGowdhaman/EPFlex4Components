@@ -7,6 +7,8 @@ package com.endlesspaths.components
 	import spark.components.SkinnableContainer;
 	import spark.components.supportClasses.SkinnableComponent;
 	
+	import com.endlesspaths.skins.*;
+	
 	public class ImageButton extends Button
 	{
 		[Bindable]
@@ -24,7 +26,7 @@ package com.endlesspaths.components
 		public function ImageButton() {
 			super();
 			
-			trace('type: '+ typeof(image));
+			setStyle("skinClass", Class(ImageButtonSkin));
 		}
 	}
 }

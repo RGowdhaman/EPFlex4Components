@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication
+	 xmlns:fx="http://ns.adobe.com/mxml/2009" 
+	 xmlns:s="library://ns.adobe.com/flex/spark" 
+	 xmlns:mx="library://ns.adobe.com/flex/mx" 
+	 xmlns:ep="com.endlesspaths.components.*" 
+	showStatusBar="false"
+	minHeight="650"	minWidth="900"
+	height="700" width="1000"
+	title="Flex4Components"
+	>
+	
+	
+	<ep:GradientSelector width="300" height="50" verticalCenter="0" horizontalCenter="0" />
+	
+	
+</s:WindowedApplication>

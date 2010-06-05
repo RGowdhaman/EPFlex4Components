@@ -1,35 +1,47 @@
 <?xml version="1.0"?>
-<project name="Endless Paths Flex 4 Components" default="debug">
+<project name="Endless Paths Flex 4 Components" default="air-build-debug-and-run">
 	<property file="build.properties" />
 	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar" />
-
-	<target name="release">
-		<!-- <compc output="${deploy.dir}/endlesspathsflex4com.swc">
-			<source-path path-element="${src.dir}" /> 
-			<include-sources dir="${src.dir}/com" includes="*" />
-		</compc> -->
-		<exec executable="fcshctl" failonerror="true">
-			<arg line="compc" />
+	
+	<target name="air-debug">
+		<exec executable="fcshctl-mxmlc" failonerror="true">
+			<arg line="+configname=air" />
+			<arg line="-source-path '${src.dir}'" />
+			<arg line="-output '${deploy.dir}/Main.swf'"/>
 			<arg line="-debug=true" />
-			<arg line="-source-path '${basedir}/${src.dir}'" />
-			<arg line="-include-sources '${basedir}/${src.dir}'" />
-			<arg line="-output '${basedir}/${deploy.dir}/endlesspathsflex4com.swc'"/>
+			<arg line="-keep-as3-metadata+=Theme,Savable"/>
+			<arg line="${src.dir}/Main.mxml"/>
 		</exec>
 	</target>
 	
+	<target name="air-run">
+		<exec executable="killall">
+			<arg value="adl" />
+		</exec>
+		<exec executable="adl">
+			<arg line="${src.dir}/Main-app.xml" />
+			<arg line="${deploy.dir}"/>
+		</exec>
+	</target>
+	
+	<target name="air-build-debug-and-run" depends="air-debug,air-run" />
+	
 	<target name="debug">
 		<exec executable="fcshctl-mxmlc" failonerror="true">
-			<arg line="-debug=false" />
+			<arg line="-debug=true" />
 			<arg line="-source-path '${basedir}/${src.dir}'" />
 			<arg line="-output '${basedir}/${deploy.dir}/debug/test.swf'"/>
 			<arg line="${basedir}/${src.dir}/CollageComponents.mxml"/>
 		</exec>
 	</target>
 	
-	<target name="debug-old">
-		<mxmlc file="${src.dir}/CollageComponents.mxml" output="${deploy.dir}/debug/test.swf" debug="true" incremental="true" keep-generated-actionscript="true">
-			<source-path path-element="${src.dir}" />
-		</mxmlc>
-		<copy file="${src.dir}/test.html" tofile="${deploy.dir}/debug/test.html" />
+	<target name="release">
+		<exec executable="fcshctl" failonerror="true">
+			<arg line="compc" />
+			<arg line="-debug=false" />
+			<arg line="-source-path '${basedir}/${src.dir}'" />
+			<arg line="-include-sources '${basedir}/${src.dir}'" />
+			<arg line="-output '${basedir}/${deploy.dir}/endlesspathsflex4com.swc'"/>
+		</exec>
 	</target>
 </project>

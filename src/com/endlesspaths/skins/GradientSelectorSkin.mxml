@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-
-    ADOBE SYSTEMS INCORPORATED
-    Copyright 2008 Adobe Systems Incorporated
-    All Rights Reserved.
-
-    NOTICE: Adobe permits you to use, modify, and distribute this file
-    in accordance with the terms of the license agreement accompanying it.
-
--->
-<!--- The default skin class for a Spark SkinnableContainer container.  
-
-     @see spark.components.SkinnableContainer
-        
-      @langversion 3.0
-      @playerversion Flash 10
-      @playerversion AIR 1.5
-      @productversion Flex 4
--->
-<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fb="http://ns.adobe.com/flashbuilder/2009" alpha.disabled="0.5">
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fb="http://ns.adobe.com/flashbuilder/2009" xmlns:ep="com.endlesspaths.components.*" alpha.disabled="0.5" height="30" maxHeight="30" minWidth="150" maxWidth="300">
 	<fx:Metadata>[HostComponent("com.endlesspaths.components.GradientSelector")]</fx:Metadata>
 	<s:states>
 		<s:State name="normal"/>
 		<s:State name="disabled"/>
 	</s:states>
 	
-	<s:HSlider id="gradientSlide" minimum="0" maximum="1.0" stepSize="0.05" />
+	<s:layout>
+		<s:BasicLayout />
+	</s:layout>
+	
+	<s:Group id="gradientTrackContainer" height="20" left="6" right="6" clipAndEnableScrolling="true">
+		<s:Rect width="100%" height="100%">
+			<s:fill>
+				<s:BitmapFill source="@Embed('/assets/transparent-pattern.png')" fillMode="repeat" />
+			</s:fill>
+		</s:Rect>
+		<s:Graphic id="gradientTrack" top="2" bottom="2" left="2" right="2" />
+		<s:Rect top="1" bottom="1" left="1" right="1">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#EEEEEE" joints="miter" miterLimit="4" weight="1"/>
+			</s:stroke>
+		</s:Rect>
+		<s:Rect width="100%" height="100%">
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#666666" joints="miter" miterLimit="4" weight="1"/>
+			</s:stroke>
+		</s:Rect>
+	</s:Group>
+	<s:Group id="gradientThumbs" left="0" right="0" top="20">
+		<s:layout>
+			<s:BasicLayout />
+		</s:layout>
+	</s:Group>
+	
+	<s:Label id="info" width="250" />
 </s:Skin>
