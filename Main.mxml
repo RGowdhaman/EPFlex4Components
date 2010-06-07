@@ -8,6 +8,7 @@
 	minHeight="650"	minWidth="900"
 	height="700" width="1000"
 	title="Flex4Components"
+	backgroundColor="0xCCCCCC"
 	>
 	
 	

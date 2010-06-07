@@ -95,10 +95,10 @@
 			</s:Rect>
 		</s:Group>
 		<ep:AutoPopUpAnchor id="colorEditorPopup" displayPopUp="false" popUpPosition="below" enabled="true" top="15" left="-4">
-			<ep:CalloutPanel id="colorEditorPanel" skinClass="com.endlesspaths.skins.CalloutPanelBlackHUDSkin" arrowPosition="top" title="Text Color">
+			<ep:CalloutPanel id="colorEditorPanel"  arrowPosition="top" title="Text Color">
 				<ep:ColorSwatchAlphaSelector hideAlpha="true"
 												selectedColor="@{hostComponent.selectionFontColor}"
-												skinClass="com.endlesspaths.skins.ColorSwatchAlphaSelectorSkin" />
+												 />
 			</ep:CalloutPanel>
 		</ep:AutoPopUpAnchor>
 	</s:Group>
@@ -116,17 +116,17 @@
 			<s:HorizontalLayout gap="-1" />
 		</s:layout>
 		<ep:ImageToggleButton image="@Embed('/assets/text-editor/format-text-bold.png')"
-						skinClass="com.endlesspaths.skins.ImageToggleButtonSkin"
+						
 						selected="@{hostComponent.selectionBold}"
 						width="33%" radiusLeft="2" radiusRight="0" />
 		
 		<ep:ImageToggleButton image="@Embed('/assets/text-editor/format-text-italic.png')"
-						skinClass="com.endlesspaths.skins.ImageToggleButtonSkin"
+						
 						selected="@{hostComponent.selectionItalic}"
 						width="33%" radiusLeft="0" radiusRight="0" />
 		
 		<ep:ImageToggleButton image="@Embed('/assets/text-editor/format-text-underline.png')"
-						skinClass="com.endlesspaths.skins.ImageToggleButtonSkin"
+						
 						selected="@{hostComponent.selectionUnderline}"
 						width="33%" radiusLeft="0" radiusRight="2" />
 	</s:Group>
@@ -139,7 +139,7 @@
 		</s:Line>
 	</s:Graphic>
 	
-	<s:ButtonBar skinClass="com.endlesspaths.skins.ImageButtonBarSkin" width="100" selectedIndex="@{hostComponent.selectionAlignment}">
+	<s:ButtonBar  width="100" selectedIndex="@{hostComponent.selectionAlignment}">
 		<s:dataProvider>
 			<s:ArrayList>
 				<fx:Object type="left" icon="@Embed('/assets/text-editor/format-justify-left.png')" />

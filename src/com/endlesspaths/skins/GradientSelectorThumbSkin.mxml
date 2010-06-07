@@ -39,8 +39,8 @@
 		</s:Graphic>
 	</s:Group>
 	<ep:AutoPopUpAnchor id="colorEditorPopup" displayPopUp="false" popUpPosition="below" enabled="true" top="10" left="-5">
-		<ep:CalloutPanel id="colorEditorPanel" arrowPosition="top" title="Text Color">
-			<ep:ColorSwatchAlphaSelector selectedColor="@{hostComponent.selectedColor}" selectedAlpha="@{hostComponent.selectedAlpha}" skinClass="com.endlesspaths.skins.ColorSwatchAlphaSelectorSkin" />
+		<ep:CalloutPanel id="colorEditorPanel" arrowPosition="top" title="Gradient Color">
+			<ep:ColorSwatchAlphaSelector selectedColor="@{hostComponent.selectedColor}" selectedAlpha="@{hostComponent.selectedAlpha}"  />
 		</ep:CalloutPanel>
 	</ep:AutoPopUpAnchor>
 </s:Skin>

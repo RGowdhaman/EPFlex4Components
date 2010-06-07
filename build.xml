@@ -6,11 +6,11 @@
 	<target name="air-debug">
 		<exec executable="fcshctl-mxmlc" failonerror="true">
 			<arg line="+configname=air" />
-			<arg line="-source-path '${src.dir}'" />
-			<arg line="-output '${deploy.dir}/Main.swf'"/>
+			<arg line="-source-path '${basedir}/${src.dir}'" />
+			<arg line="-output '${basedir}/${deploy.dir}Main.swf'"/>
 			<arg line="-debug=true" />
 			<arg line="-keep-as3-metadata+=Theme,Savable"/>
-			<arg line="${src.dir}/Main.mxml"/>
+			<arg line="${basedir}/Main.mxml"/>
 		</exec>
 	</target>
 	
@@ -19,8 +19,8 @@
 			<arg value="adl" />
 		</exec>
 		<exec executable="adl">
-			<arg line="${src.dir}/Main-app.xml" />
-			<arg line="${deploy.dir}"/>
+			<arg line="${basedir}/${src.dir}/Main-app.xml" />
+			<arg line="${basedir}/${deploy.dir}"/>
 		</exec>
 	</target>
 	

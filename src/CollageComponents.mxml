@@ -70,28 +70,28 @@
 	
 	
 	
-	<!-- 	<ep:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" top="10" left="10" fontSize="40">
-			<ep:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
+	<!-- 	<ep:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)"  top="10" left="10" fontSize="40">
+			<ep:HorizontalListStepper valuePrefix="Application: " source="{arrList}"  width="300" horizontalCenter="0" />
 		</ep:ButtonCalloutPanel>
-		<ep:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" bottom="10" left="10" fontSize="40" arrowPosition="bottom">
-			<ep:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
+		<ep:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)"  bottom="10" left="10" fontSize="40" arrowPosition="bottom">
+			<ep:HorizontalListStepper valuePrefix="Application: " source="{arrList}"  width="300" horizontalCenter="0" />
 		</ep:ButtonCalloutPanel>
 		
-		<ep:CalloutPanel id="calloutTest" skinClass="com.endlesspaths.skins.CalloutPanelSkin" visible="false">
+		<ep:CalloutPanel id="calloutTest"  visible="false">
 			<ep:layout>
 				<s:VerticalLayout />
 			</ep:layout>
 			<s:VGroup gap="8" paddingLeft="8" paddingRight="8" paddingTop="8" paddingBottom="8">
-				<ep:HorizontalNumericStepper labelFontSize="30" valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="300" height="46"/>
+				<ep:HorizontalNumericStepper labelFontSize="30" valuePrefix="thickness: "  width="300" height="46"/>
 			</s:VGroup>
 		</ep:CalloutPanel>
 		
-		<ep:ButtonCalloutPanel y="264" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" horizontalCenter="0">
+		<ep:ButtonCalloutPanel y="264"  horizontalCenter="0">
 			<s:Button label="Click me!"/>
-			<ep:HorizontalNumericStepper valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="220" height="36"/>
+			<ep:HorizontalNumericStepper valuePrefix="thickness: "  width="220" height="36"/>
 		</ep:ButtonCalloutPanel>
 		
-		<ep:ButtonCalloutPanel y="198" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="top">
+		<ep:ButtonCalloutPanel y="198"  horizontalCenter="0" arrowPosition="top">
 			<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
 				<s:layout>
 					<s:TileLayout horizontalGap="8" verticalGap="8" requestedColumnCount="4" />
@@ -99,7 +99,7 @@
 			</s:List>
 		</ep:ButtonCalloutPanel>
 		
-		<ep:ButtonCalloutPanel bottom="50" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="bottom">
+		<ep:ButtonCalloutPanel bottom="50"  horizontalCenter="0" arrowPosition="bottom">
 			<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
 				<s:layout>
 					<s:TileLayout horizontalGap="8" verticalGap="8" requestedColumnCount="5" />
@@ -107,12 +107,12 @@
 			</s:List>
 		</ep:ButtonCalloutPanel>
 		
-		<ep:ColorSelector y="100" horizontalCenter="0" width="280" skinClass="com.endlesspaths.skins.ColorSelectorSkin" />
+		<ep:ColorSelector y="100" horizontalCenter="0" width="280"  />
 		
 		<ep:ColorSwatchAlphaSelector y="40" horizontalCenter="0" />
 		 -->
-	<!-- <ep:ImageButton y="40" horizontalCenter="0" label="test button" image="@Embed('/assets/ai_appicon-tn.gif')" skinClass="com.endlesspaths.skins.ButtonSkin" /> -->
-	<!-- <ep:TextFlowEditor y="40" horizontalCenter="0" editor="{editor}" skinClass="com.endlesspaths.skins.TextFlowEditorSkin" />
+	<!-- <ep:ImageButton y="40" horizontalCenter="0" label="test button" image="@Embed('/assets/ai_appicon-tn.gif')"  /> -->
+	<!-- <ep:TextFlowEditor y="40" horizontalCenter="0" editor="{editor}"  />
 		<s:TextArea id="editor" y="100"
 		                focusEnabled="false"
 		                width="300" height="300"
@@ -129,5 +129,5 @@
 		            </s:textFlow>
 		        </s:TextArea> -->
 		
-	<ep:GradientSelector verticalCenter="0" horizontalCenter="0" skinClass="com.endlesspaths.skins.GradientSelectorSkin" />
+	<ep:GradientSelector verticalCenter="0" horizontalCenter="0"  />
 </s:Application>
