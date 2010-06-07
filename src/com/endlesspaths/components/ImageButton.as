@@ -16,7 +16,10 @@ package com.endlesspaths.components
 		
 		[Bindable]
 		public var cornerRadius:Number = 2;
-		
+	
+		[Bindable]
+		public var text:String = "";
+
 		[Bindable]
 		public var radiusLeft:Number = cornerRadius;
 		

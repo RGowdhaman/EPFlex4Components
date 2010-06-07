@@ -41,9 +41,6 @@
 			
 			override public function get colorizeExclusions():Array {return exclusions;}
 			
-			protected function gr_creationComplete(evt:FlexEvent):void {
-				img.source = hostComponent.image;
-			}
 		]]>		   
 	</fx:Script>
 	
@@ -57,21 +54,23 @@
 	
 	<!-- layer 8: text -->
 	<!--- @copy spark.components.supportClasses.ButtonBase#labelDisplay -->
-	<s:Group>
+	<s:SkinnableContainer backgroundAlpha="0" backgroundColor="0xffffff" >
 		<s:layout>
-			<s:VerticalLayout />
+			<s:VerticalLayout horizontalAlign="center"/>
 		</s:layout>
-		<s:Graphic id="gr" creationComplete="gr_creationComplete(event);" horizontalCenter="0" verticalCenter="0">
+		<s:Group>
 			<s:filters>
 				<s:GlowFilter blurX="5" blurY="5" color="#999999" inner="false" strength="1" alpha="0" alpha.over="1.0" quality="3" knockout="false" />
 			</s:filters>
-			<s:BitmapImage id="img" alpha="0.8" alpha.over="1.0" />
-		</s:Graphic>
+			<s:BitmapImage source="{hostComponent.image}" id="img" alpha="0.8" horizontalCenter="0" alpha.over="1.0" />
+		</s:Group>
 		<s:Label id="labelDisplay"
 	             textAlign="center"
+				 text="{hostComponent.text}"
 	             verticalAlign="middle"
 	             maxDisplayedLines="1"
-	             left="2" right="2" bottom="2" visible="false" />
-	</s:Group>
+				 fontSize="10"
+	             left="2" right="2" bottom="2" />
+	</s:SkinnableContainer>
 	
 </s:SparkSkin>
