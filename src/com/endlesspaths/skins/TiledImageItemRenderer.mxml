@@ -18,11 +18,15 @@
 	
 	]]>
 	</fx:Script>
-	<s:Group horizontalCenter="0" verticalCenter="0">
+	<s:layout>
+		<s:BasicLayout />
+	</s:layout>
+	
+	<s:Group width="90" height="90">
 		<s:layout>
-			<s:VerticalLayout horizontalAlign="center"/>
+			<s:VerticalLayout horizontalAlign="center" />
 		</s:layout>
 		<s:BitmapImage source="{data.image.source}"/>
-		<s:Label text="{data.label}" horizontalCenter="0"/>
+		<s:Label fontWeight="bold" text="{data.label}" horizontalCenter="0"/>
 	</s:Group>
 </s:ItemRenderer>
