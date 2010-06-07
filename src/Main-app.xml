@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application xmlns="http://ns.adobe.com/air/application/1.5">
+	<id>com.endlesspaths.Flex4Components</id>
+	<version>0.1.9</version>
+	<filename>Flex4Components</filename>
+	<allowBrowserInvocation>true</allowBrowserInvocation>
+	<initialWindow>
+		<content>Main.swf</content>
+		<visible>false</visible>
+		<systemChrome>standard</systemChrome>
+		<transparent>false</transparent>
+		<width>1000</width>
+		<height>700</height>
+		<x>150</x>
+		<y>150</y>
+	</initialWindow>
+</application>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:fb="http://ns.adobe.com/flashbuilder/2009" xmlns:ep="com.endlesspaths.components.*" alpha.disabled="0.5">
+	<fx:Metadata>[HostComponent("com.endlesspaths.components.GradientSelectorThumb")]</fx:Metadata>
+	<s:states>
+		<s:State name="up" />
+		<s:State name="over" />
+		<s:State name="down" />
+		<s:State name="disabled" />
+	</s:states>
+	
+	<s:Group id="gradientThumb">
+		<s:Graphic>
+			<s:Path data="M 7.77 0.01 L 3.90 6.72 0.03 0.01 Z" height="5" rotation="180" width="10" horizontalCenter="0" top="0">
+				<s:fill>
+					<s:SolidColor alpha="1" color="#666666"/>
+				</s:fill>
+			</s:Path>
+			<s:Rect height="12" width="16" top="5">
+				<s:stroke>
+					<s:SolidColorStroke caps="none" color="#666666" joints="miter" miterLimit="4" weight="1"/>
+				</s:stroke>
+				<s:fill>
+					<s:LinearGradient rotation="90">
+						<s:GradientEntry alpha="1.0" color="#EEEEEE" ratio="0"/>
+						<s:GradientEntry alpha="1.0" color="#CCCCCC" ratio="1"/>
+					</s:LinearGradient>
+				</s:fill>
+			</s:Rect>
+			<s:Rect top="7" left="2" right="2" bottom="2">
+				<s:fill>
+					<s:BitmapFill source="@Embed('/assets/transparent-pattern.png')" fillMode="repeat" />
+				</s:fill>
+			</s:Rect>
+			<s:Rect top="7" left="2" right="2" bottom="2">
+				<s:fill>
+					<s:SolidColor alpha="{hostComponent.selectedAlpha}" color="{hostComponent.selectedColor}"/>
+				</s:fill>
+			</s:Rect>
+		</s:Graphic>
+	</s:Group>
+	<ep:AutoPopUpAnchor id="colorEditorPopup" displayPopUp="false" popUpPosition="below" enabled="true" top="10" left="-5">
+		<ep:CalloutPanel id="colorEditorPanel" arrowPosition="top" title="Gradient Color">
+			<ep:ColorSwatchAlphaSelector selectedColor="@{hostComponent.selectedColor}" selectedAlpha="@{hostComponent.selectedAlpha}"  />
+		</ep:CalloutPanel>
+	</ep:AutoPopUpAnchor>
+</s:Skin>

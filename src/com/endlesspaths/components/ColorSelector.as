@@ -13,6 +13,8 @@ package com.endlesspaths.components
 	import spark.components.SkinnableContainer;
 	import spark.components.supportClasses.SkinnableComponent;
 	
+	import com.endlesspaths.skins.*;
+	
 	public class ColorSelector extends SkinnableContainer
 	{
 		[Bindable]
@@ -51,6 +53,8 @@ package com.endlesspaths.components
 		
 		public function ColorSelector() {
 			super();
+			
+			setStyle("skinClass", Class(ColorSelectorSkin));
 		}
 		
 		override protected function getCurrentSkinState():String {

@@ -16,7 +16,11 @@ package com.endlesspaths.components
 	import mx.events.FlexEvent;
 	import spark.events.IndexChangeEvent;
 	
+	import com.endlesspaths.skins.*;
+	
 	public class TextFlowEditor extends SkinnableComponent {
+		[Bindable]public var disabled:Boolean = false;
+		
 		[Bindable]public var selectionAlignment:Number = 0;
 		[Bindable]public var selectionFontFamily:String = "Arial";
 		[Bindable]public var selectionFontSize:Number = 10;
@@ -30,7 +34,13 @@ package com.endlesspaths.components
 		public function TextFlowEditor() {
 			super();
 			
+			setStyle("skinClass", Class(TextFlowEditorSkin));
+			
 			addEventListener( PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged);
+		}
+		
+		override protected function getCurrentSkinState():String {
+			return (disabled == true ? "disabled" : "normal");
 		}
 		
 		public function get editor():TextArea {
@@ -49,6 +59,9 @@ package com.endlesspaths.components
 		
 		protected function boundPropertyChanged(event:PropertyChangeEvent):void {
 			switch(event.property) {
+				case "disabled":
+					invalidateSkinState();
+					break;
 				case "selectionAlignment":
 					switch(selectionAlignment) {
 						case 0:

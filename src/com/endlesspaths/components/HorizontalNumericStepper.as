@@ -11,6 +11,8 @@ package com.endlesspaths.components
 	import spark.components.TextInput;
 	import spark.components.supportClasses.SkinnableComponent;
 	
+	import com.endlesspaths.skins.*;
+	
 	[Event(name="change", type="spark.events.TextOperationEvent")]
 	
 	[SkinState("normal")]
@@ -40,6 +42,8 @@ package com.endlesspaths.components
 
 		public function HorizontalNumericStepper() {
 			super();
+			
+			setStyle("skinClass", Class(HorizontalNumericStepperSkin));
 		}
 		
 		public function get numericValue():Number {

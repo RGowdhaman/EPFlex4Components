@@ -7,6 +7,8 @@ package com.endlesspaths.components
 	import spark.components.SkinnableContainer;
 	import spark.components.supportClasses.SkinnableComponent;
 	
+	import com.endlesspaths.skins.*;
+	
 	public class ImageToggleButton extends ToggleButton
 	{
 		[Bindable]
@@ -23,6 +25,8 @@ package com.endlesspaths.components
 		
 		public function ImageToggleButton() {
 			super();
+			
+			setStyle("skinClass", Class(ImageToggleButtonSkin));
 		}
 	}
 }

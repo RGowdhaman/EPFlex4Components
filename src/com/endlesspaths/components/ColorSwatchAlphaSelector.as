@@ -14,6 +14,8 @@ package com.endlesspaths.components
 	import spark.components.SkinnableContainer;
 	import spark.components.supportClasses.SkinnableComponent;
 	
+	import com.endlesspaths.skins.*;
+	
 	public class ColorSwatchAlphaSelector extends SkinnableContainer
 	{
 		[Bindable]
@@ -33,6 +35,8 @@ package com.endlesspaths.components
 		
 		public function ColorSwatchAlphaSelector() {
 			super();
+			
+			setStyle("skinClass", Class(ColorSwatchAlphaSelectorSkin));
 			
 			this.colorSwatches.addItem({'color': 0x003B59});
 			this.colorSwatches.addItem({'color': 0x00996D});

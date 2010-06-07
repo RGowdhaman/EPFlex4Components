@@ -70,28 +70,28 @@
 	
 	
 	
-	<!-- 	<ep:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" top="10" left="10" fontSize="40">
-			<ep:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
+	<!-- 	<ep:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)"  top="10" left="10" fontSize="40">
+			<ep:HorizontalListStepper valuePrefix="Application: " source="{arrList}"  width="300" horizontalCenter="0" />
 		</ep:ButtonCalloutPanel>
-		<ep:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" bottom="10" left="10" fontSize="40" arrowPosition="bottom">
-			<ep:HorizontalListStepper valuePrefix="Application: " source="{arrList}" skinClass="com.endlesspaths.skins.HorizontalListStepperSkin" width="300" horizontalCenter="0" />
+		<ep:ButtonCalloutPanel label="Click me!" click="btnTest_clickHandler(event)"  bottom="10" left="10" fontSize="40" arrowPosition="bottom">
+			<ep:HorizontalListStepper valuePrefix="Application: " source="{arrList}"  width="300" horizontalCenter="0" />
 		</ep:ButtonCalloutPanel>
 		
-		<ep:CalloutPanel id="calloutTest" skinClass="com.endlesspaths.skins.CalloutPanelSkin" visible="false">
+		<ep:CalloutPanel id="calloutTest"  visible="false">
 			<ep:layout>
 				<s:VerticalLayout />
 			</ep:layout>
 			<s:VGroup gap="8" paddingLeft="8" paddingRight="8" paddingTop="8" paddingBottom="8">
-				<ep:HorizontalNumericStepper labelFontSize="30" valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="300" height="46"/>
+				<ep:HorizontalNumericStepper labelFontSize="30" valuePrefix="thickness: "  width="300" height="46"/>
 			</s:VGroup>
 		</ep:CalloutPanel>
 		
-		<ep:ButtonCalloutPanel y="264" skinClass="com.endlesspaths.skins.ButtonCalloutPanelSkin" horizontalCenter="0">
+		<ep:ButtonCalloutPanel y="264"  horizontalCenter="0">
 			<s:Button label="Click me!"/>
-			<ep:HorizontalNumericStepper valuePrefix="thickness: " skinClass="com.endlesspaths.skins.HorizontalNumericStepperSkin" width="220" height="36"/>
+			<ep:HorizontalNumericStepper valuePrefix="thickness: "  width="220" height="36"/>
 		</ep:ButtonCalloutPanel>
 		
-		<ep:ButtonCalloutPanel y="198" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="top">
+		<ep:ButtonCalloutPanel y="198"  horizontalCenter="0" arrowPosition="top">
 			<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
 				<s:layout>
 					<s:TileLayout horizontalGap="8" verticalGap="8" requestedColumnCount="4" />
@@ -99,7 +99,7 @@
 			</s:List>
 		</ep:ButtonCalloutPanel>
 		
-		<ep:ButtonCalloutPanel bottom="50" skinClass="com.endlesspaths.skins.ButtonCalloutPanelBlackHUDSkin" horizontalCenter="0" arrowPosition="bottom">
+		<ep:ButtonCalloutPanel bottom="50"  horizontalCenter="0" arrowPosition="bottom">
 			<s:List dataProvider="{arrList}" itemRenderer="com.endlesspaths.components.TiledImageItemRenderer" contentBackgroundAlpha="0.0" color="#FFFFFF" borderVisible="false" width="100%">
 				<s:layout>
 					<s:TileLayout horizontalGap="8" verticalGap="8" requestedColumnCount="5" />
@@ -107,25 +107,27 @@
 			</s:List>
 		</ep:ButtonCalloutPanel>
 		
-		<ep:ColorSelector y="100" horizontalCenter="0" width="280" skinClass="com.endlesspaths.skins.ColorSelectorSkin" />
+		<ep:ColorSelector y="100" horizontalCenter="0" width="280"  />
 		
 		<ep:ColorSwatchAlphaSelector y="40" horizontalCenter="0" />
 		 -->
-	<!-- <ep:ImageButton y="40" horizontalCenter="0" label="test button" image="@Embed('/assets/ai_appicon-tn.gif')" skinClass="com.endlesspaths.skins.ButtonSkin" /> -->
-	<ep:TextFlowEditor y="40" horizontalCenter="0" editor="{editor}" skinClass="com.endlesspaths.skins.TextFlowEditorSkin" />
-	<s:TextArea id="editor" y="100"
-	                focusEnabled="false"
-	                width="300" height="300"
-	                minHeight="200"
-					horizontalCenter="0">
-	            <s:textFlow>
-	                <s:TextFlow paragraphSpaceBefore="20">
-	                    <s:p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et nibh lorem. Nulla ut velit magna. Nunc quis libero ac orci porta tincidunt eget in lorem. Aenean vitae nisi vitae urna lacinia congue. Duis nec leo turpis. Phasellus dui orci, lacinia in dictum lacinia, ullamcorper a tortor. Suspendisse lacinia, turpis vel euismod gravida, turpis dui vulputate libero, vel consequat enim sem nec mauris. Curabitur vitae magna vel neque accumsan commodo vitae quis ipsum. Nullam ac condimentum elit. Integer eget magna ac mi fermentum luctus. Ut pharetra auctor pulvinar. Duis lobortis, nulla at vestibulum tincidunt, ante neque scelerisque risus, ac dignissim nunc nisl rhoncus risus. Cras pretium egestas purus, a commodo nunc vehicula at. Fusce vestibulum enim in mi hendrerit a viverra justo tempor. Maecenas eget ipsum ac mauris dictum congue eu id justo.</s:p>
-	                    <s:p>Aliquam tincidunt tempor nisi id porta. Aenean risus dolor, tincidunt a ultrices in, laoreet eu ante. Mauris vel lacus neque, ut scelerisque eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec vel lacus sit amet erat vehicula malesuada id in augue. Sed purus massa, placerat non imperdiet nec, venenatis a nulla. Donec vel ligula leo, in rhoncus arcu. Duis semper bibendum facilisis. Duis nibh lorem, egestas rutrum tincidunt non, vulputate accumsan nulla. Nunc ligula nisl, ultrices ut tempor quis, rutrum et enim. Nullam accumsan scelerisque ante id pretium. Mauris nibh metus, blandit in varius congue, pharetra sit amet sem. Phasellus tincidunt lacus quis est semper ut rhoncus sem pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar, enim eu consectetur venenatis, dui tortor commodo ante, sit amet sagittis libero odio cursus neque. Aliquam a dui non eros placerat euismod. In at mattis felis. Suspendisse potenti. Morbi posuere condimentum lacus. Suspendisse tellus magna, viverra ac mattis vel, adipiscing eget lectus.</s:p>
-	                    <s:p>Etiam ut eros lectus. Praesent nec massa nibh. Cras venenatis, ligula in condimentum euismod, nisl lorem hendrerit lacus, a imperdiet odio est et odio. Suspendisse eu orci ut augue commodo gravida sed eu risus. Vestibulum venenatis erat ac metus ullamcorper blandit. Integer et sem enim. Vivamus a arcu metus. Nunc sollicitudin commodo placerat. Maecenas vehicula, massa et auctor tempor, felis leo commodo lorem, eget pulvinar felis turpis nec erat. Mauris imperdiet gravida felis a eleifend.</s:p>
-	                    <s:p>Suspendisse mattis tempor fringilla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed molestie arcu. Praesent ut tellus sed orci blandit tristique non eget est. Sed interdum feugiat nisi, sit amet aliquet enim sodales non. Maecenas in velit sit amet tellus tincidunt dapibus. Vivamus est eros, iaculis et venenatis a, malesuada vel lacus. Aliquam vel orci tortor. Etiam ornare ante eget massa dignissim a auctor nunc pellentesque. Pellentesque sodales porta nisi, pretium accumsan eros tincidunt vitae. Cras facilisis accumsan purus ultricies lacinia. Praesent consequat elit imperdiet tellus vehicula ut ornare mauris mattis. Suspendisse non tortor nisl. Etiam ac pretium est.</s:p>
-	                    <s:p>Maecenas tristique, velit aliquam faucibus ornare, justo erat porta elit, sed venenatis neque mi ac elit. Nullam enim metus, gravida ac euismod sit amet, commodo vitae elit. Quisque eget molestie ante. Nulla fermentum pretium augue non tristique. Praesent in orci eu diam ultrices sodales ac quis leo. Aliquam lobortis elit quis mi rutrum feugiat. Aenean sed elit turpis. Duis enim ligula, posuere sit amet semper a, pretium vel leo. Etiam mollis dolor nec elit suscipit imperdiet. Sed a est eros.</s:p>
-	                </s:TextFlow>
-	            </s:textFlow>
-	        </s:TextArea>
+	<!-- <ep:ImageButton y="40" horizontalCenter="0" label="test button" image="@Embed('/assets/ai_appicon-tn.gif')"  /> -->
+	<!-- <ep:TextFlowEditor y="40" horizontalCenter="0" editor="{editor}"  />
+		<s:TextArea id="editor" y="100"
+		                focusEnabled="false"
+		                width="300" height="300"
+		                minHeight="200"
+						horizontalCenter="0">
+		            <s:textFlow>
+		                <s:TextFlow paragraphSpaceBefore="20">
+		                    <s:p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis et nibh lorem. Nulla ut velit magna. Nunc quis libero ac orci porta tincidunt eget in lorem. Aenean vitae nisi vitae urna lacinia congue. Duis nec leo turpis. Phasellus dui orci, lacinia in dictum lacinia, ullamcorper a tortor. Suspendisse lacinia, turpis vel euismod gravida, turpis dui vulputate libero, vel consequat enim sem nec mauris. Curabitur vitae magna vel neque accumsan commodo vitae quis ipsum. Nullam ac condimentum elit. Integer eget magna ac mi fermentum luctus. Ut pharetra auctor pulvinar. Duis lobortis, nulla at vestibulum tincidunt, ante neque scelerisque risus, ac dignissim nunc nisl rhoncus risus. Cras pretium egestas purus, a commodo nunc vehicula at. Fusce vestibulum enim in mi hendrerit a viverra justo tempor. Maecenas eget ipsum ac mauris dictum congue eu id justo.</s:p>
+		                    <s:p>Aliquam tincidunt tempor nisi id porta. Aenean risus dolor, tincidunt a ultrices in, laoreet eu ante. Mauris vel lacus neque, ut scelerisque eros. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec vel lacus sit amet erat vehicula malesuada id in augue. Sed purus massa, placerat non imperdiet nec, venenatis a nulla. Donec vel ligula leo, in rhoncus arcu. Duis semper bibendum facilisis. Duis nibh lorem, egestas rutrum tincidunt non, vulputate accumsan nulla. Nunc ligula nisl, ultrices ut tempor quis, rutrum et enim. Nullam accumsan scelerisque ante id pretium. Mauris nibh metus, blandit in varius congue, pharetra sit amet sem. Phasellus tincidunt lacus quis est semper ut rhoncus sem pretium. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pulvinar, enim eu consectetur venenatis, dui tortor commodo ante, sit amet sagittis libero odio cursus neque. Aliquam a dui non eros placerat euismod. In at mattis felis. Suspendisse potenti. Morbi posuere condimentum lacus. Suspendisse tellus magna, viverra ac mattis vel, adipiscing eget lectus.</s:p>
+		                    <s:p>Etiam ut eros lectus. Praesent nec massa nibh. Cras venenatis, ligula in condimentum euismod, nisl lorem hendrerit lacus, a imperdiet odio est et odio. Suspendisse eu orci ut augue commodo gravida sed eu risus. Vestibulum venenatis erat ac metus ullamcorper blandit. Integer et sem enim. Vivamus a arcu metus. Nunc sollicitudin commodo placerat. Maecenas vehicula, massa et auctor tempor, felis leo commodo lorem, eget pulvinar felis turpis nec erat. Mauris imperdiet gravida felis a eleifend.</s:p>
+		                    <s:p>Suspendisse mattis tempor fringilla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed molestie arcu. Praesent ut tellus sed orci blandit tristique non eget est. Sed interdum feugiat nisi, sit amet aliquet enim sodales non. Maecenas in velit sit amet tellus tincidunt dapibus. Vivamus est eros, iaculis et venenatis a, malesuada vel lacus. Aliquam vel orci tortor. Etiam ornare ante eget massa dignissim a auctor nunc pellentesque. Pellentesque sodales porta nisi, pretium accumsan eros tincidunt vitae. Cras facilisis accumsan purus ultricies lacinia. Praesent consequat elit imperdiet tellus vehicula ut ornare mauris mattis. Suspendisse non tortor nisl. Etiam ac pretium est.</s:p>
+		                    <s:p>Maecenas tristique, velit aliquam faucibus ornare, justo erat porta elit, sed venenatis neque mi ac elit. Nullam enim metus, gravida ac euismod sit amet, commodo vitae elit. Quisque eget molestie ante. Nulla fermentum pretium augue non tristique. Praesent in orci eu diam ultrices sodales ac quis leo. Aliquam lobortis elit quis mi rutrum feugiat. Aenean sed elit turpis. Duis enim ligula, posuere sit amet semper a, pretium vel leo. Etiam mollis dolor nec elit suscipit imperdiet. Sed a est eros.</s:p>
+		                </s:TextFlow>
+		            </s:textFlow>
+		        </s:TextArea> -->
+		
+	<ep:GradientSelector verticalCenter="0" horizontalCenter="0"  />
 </s:Application>

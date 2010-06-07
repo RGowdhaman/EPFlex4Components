@@ -11,6 +11,8 @@ package com.endlesspaths.components
 	import spark.components.TextInput;
 	import spark.components.supportClasses.SkinnableComponent;
 	
+	import com.endlesspaths.skins.*;
+	
 	[SkinState("normal")]
 	[SkinState("manual")]
 	public class HorizontalListStepper extends SkinnableComponent
@@ -34,6 +36,8 @@ package com.endlesspaths.components
 
 		public function HorizontalListStepper() {
 			super();
+			
+			setStyle("skinClass", Class(HorizontalListStepperSkin));
 		}
 		
 		public function set source(val:ArrayList):void {
