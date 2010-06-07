@@ -11,13 +11,13 @@
 	]]></fx:Metadata>
 	<fx:Declarations>
 		<fx:Component id="firstButton">
-			<s:ButtonBarButton  />
+			<s:ButtonBarButton skinClass="com.endlesspaths.skins.ImageButtonBarFirstButtonSkin" />
 		</fx:Component>
 		<fx:Component id="middleButton">
-			<s:ButtonBarButton  />
+			<s:ButtonBarButton skinClass="com.endlesspaths.skins.ImageButtonBarMiddleButtonSkin" />
 		</fx:Component>
 		<fx:Component id="lastButton">
-			<s:ButtonBarButton  />
+			<s:ButtonBarButton skinClass="com.endlesspaths.skins.ImageButtonBarLastButtonSkin" />
 		</fx:Component>
 	</fx:Declarations>
 	<s:DataGroup id="dataGroup" width="100%" height="100%">

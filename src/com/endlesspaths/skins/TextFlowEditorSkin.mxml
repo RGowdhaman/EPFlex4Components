@@ -4,7 +4,7 @@
 	 xmlns:s="library://ns.adobe.com/flex/spark"
 	 xmlns:mx="library://ns.adobe.com/flex/mx"
 	 xmlns:ep="com.endlesspaths.components.*"
-	 initialize="init()" height="20">
+	 initialize="init()" height="20" alpha.disabled="0.5">
 	<fx:Metadata>
 		[HostComponent("com.endlesspaths.components.TextFlowEditor")]
 	</fx:Metadata>
@@ -66,17 +66,19 @@
 	
 	<s:DropDownList id="ddlFontList"
 					dataProvider="{fontFamilyList}"
+					enabled.disabled="false"
 					selectedItem="@{hostComponent.selectionFontFamily}"
-
+					skinClass="com.endlesspaths.skins.FontDropDownListSkin"
 					requireSelection="true" />
 	
 	<s:DropDownList id="ddlFontSize"
 					changing="ddlFontSize.closeDropDown(true);"
 					dataProvider="{fontSizeList}"
+					enabled.disabled="false"
 					selectedItem="@{hostComponent.selectionFontSize}" />
 	
 	<s:Group>
-		<s:Group click="colorEditorPopup.popUpOpen = !colorEditorPopup.popUpOpen;" height="20" width="26">
+		<s:Group click="colorEditorPopup.popUpOpen = !colorEditorPopup.popUpOpen;" height="20" width="26" mouseEnabled.disabled="false" mouseChildren.disabled="false">
 			<s:Rect left="0" right="0" top="0" bottom="0">
 				<s:fill>
 					<s:LinearGradient rotation="90">
@@ -116,17 +118,17 @@
 			<s:HorizontalLayout gap="-1" />
 		</s:layout>
 		<ep:ImageToggleButton image="@Embed('/assets/text-editor/format-text-bold.png')"
-						
+						enabled.disabled="false"
 						selected="@{hostComponent.selectionBold}"
 						width="33%" radiusLeft="2" radiusRight="0" />
 		
 		<ep:ImageToggleButton image="@Embed('/assets/text-editor/format-text-italic.png')"
-						
+						enabled.disabled="false"
 						selected="@{hostComponent.selectionItalic}"
 						width="33%" radiusLeft="0" radiusRight="0" />
 		
 		<ep:ImageToggleButton image="@Embed('/assets/text-editor/format-text-underline.png')"
-						
+						enabled.disabled="false"
 						selected="@{hostComponent.selectionUnderline}"
 						width="33%" radiusLeft="0" radiusRight="2" />
 	</s:Group>
@@ -139,7 +141,7 @@
 		</s:Line>
 	</s:Graphic>
 	
-	<s:ButtonBar  width="100" selectedIndex="@{hostComponent.selectionAlignment}">
+	<s:ButtonBar width="100" selectedIndex="@{hostComponent.selectionAlignment}" enabled.disabled="false" skinClass="com.endlesspaths.skins.ImageButtonBarSkin">
 		<s:dataProvider>
 			<s:ArrayList>
 				<fx:Object type="left" icon="@Embed('/assets/text-editor/format-justify-left.png')" />
