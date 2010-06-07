@@ -171,10 +171,21 @@
 	
 	<!-- layer 8: text -->
 	<!--- @copy spark.components.supportClasses.ButtonBase#labelDisplay -->
-	<s:Graphic id="gr"
-			creationComplete="gr_creationComplete(event);"
-			horizontalCenter="0" verticalCenter="0">
-		<s:BitmapImage id="img" />
-	</s:Graphic>
+	<s:Group>
+		<s:layout>
+			<s:VerticalLayout />
+		</s:layout>
+		<s:Graphic id="gr" creationComplete="gr_creationComplete(event);" horizontalCenter="0" verticalCenter="0">
+			<s:filters>
+				<s:GlowFilter blurX="5" blurY="5" color="#999999" inner="false" strength="1" alpha="0" alpha.over="1.0" quality="3" knockout="false" />
+			</s:filters>
+			<s:BitmapImage id="img" alpha="0.8" alpha.over="1.0" />
+		</s:Graphic>
+		<s:Label id="labelDisplay"
+	             textAlign="center"
+	             verticalAlign="middle"
+	             maxDisplayedLines="1"
+	             left="2" right="2" bottom="2" visible="false" />
+	</s:Group>
 	
 </s:SparkSkin>
