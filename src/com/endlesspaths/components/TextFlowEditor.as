@@ -62,6 +62,13 @@ package com.endlesspaths.components
 				case "disabled":
 					invalidateSkinState();
 					break;
+			}
+			
+			if(_editor == null) {
+				return;
+			}
+			
+			switch(event.property) {
 				case "selectionAlignment":
 					switch(selectionAlignment) {
 						case 0:
@@ -100,8 +107,12 @@ package com.endlesspaths.components
 		}
 		
 		protected function editor_selectionChangeHandler(evt:FlexEvent):void {
-			var txtLayFmt:TextLayoutFormat = _editor.getFormatOfRange(null, _editor.selectionAnchorPosition, _editor.selectionActivePosition);
+			if(_editor == null) {
+				return;
+			}
 			
+			var txtLayFmt:TextLayoutFormat = _editor.getFormatOfRange(null, _editor.selectionAnchorPosition, _editor.selectionActivePosition);
+		
 			switch (txtLayFmt.textAlign) {
 				case TextAlign.LEFT:
 					selectionAlignment = 0;
@@ -119,20 +130,24 @@ package com.endlesspaths.components
 					selectionAlignment = -1;
 					break;
 			}
-			
+		
 			selectionBold = (txtLayFmt.fontWeight == FontWeight.BOLD);
 			selectionItalic = (txtLayFmt.fontStyle == FontPosture.ITALIC);
 			selectionUnderline = (txtLayFmt.textDecoration == TextDecoration.UNDERLINE);
-			
+		
 			selectionFontFamily = txtLayFmt.fontFamily;
 			selectionFontSize = txtLayFmt.fontSize;
-			
+		
 			selectionFontColor = txtLayFmt.color;
-			
+		
 			_editor.setFocus();
 		}
 		
 		public function applyFormat(property:String, newValue:Object):void {
+			if(_editor == null) {
+				return;
+			}
+			
 			var txtLayFmt:TextLayoutFormat = _editor.getFormatOfRange(null, editor.selectionAnchorPosition, editor.selectionActivePosition);
 			if(txtLayFmt.hasOwnProperty(property)) {
 				txtLayFmt[property] = newValue;
@@ -142,6 +157,10 @@ package com.endlesspaths.components
 		}
 		
 		public function applyFormatBoolean(property:String, trueValue:Object, falseValue:Object):void {
+			if(_editor == null) {
+				return;
+			}
+			
 			var txtLayFmt:TextLayoutFormat = _editor.getFormatOfRange(null, editor.selectionAnchorPosition, editor.selectionActivePosition);
 			if(txtLayFmt.hasOwnProperty(property)) {
 				txtLayFmt[property] = (txtLayFmt[property] == trueValue) ? falseValue : trueValue;
