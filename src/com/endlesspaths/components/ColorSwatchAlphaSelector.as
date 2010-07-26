@@ -38,11 +38,27 @@ package com.endlesspaths.components
 			
 			setStyle("skinClass", Class(ColorSwatchAlphaSelectorSkin));
 			
-			this.colorSwatches.addItem({'color': 0x003B59});
+			this.colorSwatches.addItem({'color': 0xbb070d});
+			this.colorSwatches.addItem({'color': 0xe15353});
+
+			this.colorSwatches.addItem({'color': 0xf889a4});
+			this.colorSwatches.addItem({'color': 0x8f488f});
+			this.colorSwatches.addItem({'color': 0xa186be});
+
+			this.colorSwatches.addItem({'color': 0x048fd6});
 			this.colorSwatches.addItem({'color': 0x00996D});
-			this.colorSwatches.addItem({'color': 0xA5D900});
+
+			this.colorSwatches.addItem({'color': 0x5b872a});
+			this.colorSwatches.addItem({'color': 0x8cba03});
+
 			this.colorSwatches.addItem({'color': 0xF2E926});
-			this.colorSwatches.addItem({'color': 0xFF930E});
+			this.colorSwatches.addItem({'color': 0xf6bd10});
+
+			this.colorSwatches.addItem({'color': 0xFFFFFF});
+			this.colorSwatches.addItem({'color': 0xbfbfbf});
+			this.colorSwatches.addItem({'color': 0x808080});
+			this.colorSwatches.addItem({'color': 0x404040});
+			this.colorSwatches.addItem({'color': 0x000000});
 		}
 		
 		override protected function getCurrentSkinState():String {
