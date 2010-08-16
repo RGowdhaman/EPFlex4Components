@@ -53,5 +53,5 @@
               skinClass="com.endlesspaths.skins.VScrollBarDownButtonSkin"  bottom="0" right="0" left="0" height="18"/>
 	<s:Button id="thumb" 
               focusEnabled="false" visible.inactive="false"
-              skinClass="com.endlesspaths.skins.VScrollBarThumbSkin"  right="0" left="0" />
+              skinClass="com.endlesspaths.skins.VScrollBarThumbSkin" left="0"  left.normal="0" right.inactive="0" right.disabled="0" right.normal="0"/>
 </s:SparkSkin>

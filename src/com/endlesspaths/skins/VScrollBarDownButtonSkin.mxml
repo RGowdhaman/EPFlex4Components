@@ -30,7 +30,7 @@
 				<s:SolidColorStroke caps="none" color="#666666" joints="round" miterLimit="4" weight="1"/>
 			</s:stroke>
 		</s:Path>
-		<s:Path data="M 3.492 0 L 0 8.087 L 6.984 8.087 L 3.492 0" height="8.087" rotation="180" width="9" x.over="-3" x.down="-3" x.disabled="-3" horizontalCenter.up="0" y.over="-4" y.down="-4" y.disabled="-4" verticalCenter.up="2">
+		<s:Path data="M 3.492 0 L 0 8.087 L 6.984 8.087 L 3.492 0" height="7" width="8" rotation="180" horizontalCenter="0" verticalCenter="2">
 			<s:fill>
 				<s:SolidColor color="#333333"/>
 			</s:fill>

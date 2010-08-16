@@ -53,4 +53,33 @@
 			<s:SolidColorStroke caps="none" color="#666666" joints="round" miterLimit="4" weight="1"/>
 		</s:stroke>
 	</s:Path>
+	
+	
+	<s:Line yTo="8" horizontalCenter="0" verticalCenter="0" right="4" left="4" height="0">
+		<s:stroke>
+			<s:SolidColorStroke alpha="0.5" caps="none" color="#666666" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Line>
+	
+	<s:Line yTo="8" horizontalCenter="0" verticalCenter="-8" right="4" left="4" height="0">
+		<s:stroke>
+			<s:SolidColorStroke alpha="0.5" caps="none" color="#666666" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Line>
+	<s:Line yTo="8" horizontalCenter="0" verticalCenter="-4" right="4" left="4" height="0">
+		<s:stroke>
+			<s:SolidColorStroke alpha="0.5" caps="none" color="#666666" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Line>
+	
+	<s:Line yTo="8" horizontalCenter="0" verticalCenter="8" right="4" left="4" height="0">
+		<s:stroke>
+			<s:SolidColorStroke alpha="0.5" caps="none" color="#666666" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Line>
+	<s:Line yTo="8" horizontalCenter="0" verticalCenter="4" right="4" left="4" height="0">
+		<s:stroke>
+			<s:SolidColorStroke alpha="0.5" caps="none" color="#666666" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Line>
 </s:SparkSkin>
