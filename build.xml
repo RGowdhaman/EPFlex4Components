@@ -36,11 +36,12 @@
 	</target>
 	
 	<target name="release">
-		<exec executable="fcshctl" failonerror="true">
-			<arg line="compc" />
+		<exec executable="compc" failonerror="true">
+			<!-- <arg line="compc" /> -->
 			<arg line="-debug=false" />
 			<arg line="-source-path '${basedir}/${src.dir}'" />
 			<arg line="-include-sources '${basedir}/${src.dir}'" />
+			<arg line="-include-file 'defaults.css' '${basedir}/${src.dir}/com/endlesspaths/defaults.css'" />
 			<arg line="-output '${basedir}/${deploy.dir}/endlesspathsflex4com.swc'"/>
 		</exec>
 	</target>
