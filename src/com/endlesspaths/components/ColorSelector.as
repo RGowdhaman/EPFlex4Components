@@ -71,7 +71,7 @@ package com.endlesspaths.components
 				
 				colorBox.addEventListener(MouseEvent.MOUSE_DOWN, colorBox_MouseDown);
 			} else if (instance == colorHues) {
-/*				colorHues.addEventListener(MouseEvent.CLICK, colorHues_Click);*/
+				colorHues.addEventListener(MouseEvent.CLICK, colorHues_Click);
 				colorHues.addEventListener(MouseEvent.MOUSE_OVER, Shared_MouseOver);
 				colorHues.addEventListener(MouseEvent.MOUSE_OUT, Shared_MouseOut);
 				

@@ -148,25 +148,28 @@ package com.endlesspaths.components
 				return;
 			}
 			
-			var txtLayFmt:TextLayoutFormat = _editor.getFormatOfRange(null, editor.selectionAnchorPosition, editor.selectionActivePosition);
-			if(txtLayFmt.hasOwnProperty(property)) {
-				txtLayFmt[property] = newValue;
-			}
-			_editor.setFormatOfRange(txtLayFmt, editor.selectionAnchorPosition, editor.selectionActivePosition);
-			_editor.setFocus();
+			try {
+				var txtLayFmt:TextLayoutFormat = _editor.getFormatOfRange(null, editor.selectionAnchorPosition, editor.selectionActivePosition);
+				if(txtLayFmt.hasOwnProperty(property)) {
+					txtLayFmt[property] = newValue;
+				}
+				_editor.setFormatOfRange(txtLayFmt, editor.selectionAnchorPosition, editor.selectionActivePosition);
+				_editor.setFocus();
+			} catch (error:Error) {}
 		}
 		
 		public function applyFormatBoolean(property:String, trueValue:Object, falseValue:Object):void {
 			if(_editor == null) {
 				return;
 			}
-			
-			var txtLayFmt:TextLayoutFormat = _editor.getFormatOfRange(null, editor.selectionAnchorPosition, editor.selectionActivePosition);
-			if(txtLayFmt.hasOwnProperty(property)) {
-				txtLayFmt[property] = (txtLayFmt[property] == trueValue) ? falseValue : trueValue;
-			}
-			_editor.setFormatOfRange(txtLayFmt, editor.selectionAnchorPosition, editor.selectionActivePosition);
-			_editor.setFocus();
+			try {
+				var txtLayFmt:TextLayoutFormat = _editor.getFormatOfRange(null, editor.selectionAnchorPosition, editor.selectionActivePosition);
+				if(txtLayFmt.hasOwnProperty(property)) {
+					txtLayFmt[property] = (txtLayFmt[property] == trueValue) ? falseValue : trueValue;
+				}
+				_editor.setFormatOfRange(txtLayFmt, editor.selectionAnchorPosition, editor.selectionActivePosition);
+				_editor.setFocus();
+			} catch (error:Error) {}
 		}
 	}
 }

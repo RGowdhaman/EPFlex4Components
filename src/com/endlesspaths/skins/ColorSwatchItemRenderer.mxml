@@ -22,8 +22,8 @@
 		<s:fill>
 			<s:SolidColor color="{data.color}" />
 		</s:fill>
-		<s:stroke>
+		<!-- <s:stroke>
 			<s:SolidColorStroke caps="none" color="#999999" joints="miter" miterLimit="4" weight="1"/>
-		</s:stroke>
+		</s:stroke> -->
 	</s:Rect>
 </s:ItemRenderer>
