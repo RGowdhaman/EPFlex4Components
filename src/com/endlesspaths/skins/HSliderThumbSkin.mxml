@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+    ADOBE SYSTEMS INCORPORATED
+    Copyright 2008 Adobe Systems Incorporated
+    All Rights Reserved.
+
+    NOTICE: Adobe permits you to use, modify, and distribute this file
+    in accordance with the terms of the license agreement accompanying it.
+
+-->
+
+<!--- The default skin class for the thumb of a Spark HSlider component.  
+
+       @see spark.components.HSlider
+        
+      @langversion 3.0
+      @playerversion Flash 10
+      @playerversion AIR 1.5
+      @productversion Flex 4
+ -->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:fb="http://ns.adobe.com/flashbuilder/2009">
+
+    <fx:Metadata>
+    <![CDATA[ 
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.Button")]
+    ]]>
+    </fx:Metadata> 
+    
+    <fx:Script fb:purpose="styling">
+        /**
+         * @private
+         */
+        override protected function initializationComplete():void
+        {
+            useChromeColor = true;
+            super.initializationComplete();
+        }
+    </fx:Script>
+    
+    <s:states>
+        <s:State name="up" />
+        <s:State name="over" />
+        <s:State name="down" />
+        <s:State name="disabled" />
+    </s:states>
+
+    
+	<s:Ellipse height="14" width="14" x="0.5" y="0.5">
+		<s:filters>
+			<s:BevelFilter angle="45.0" blurX="4.0" blurY="4.0" distance="1" highlightAlpha="1.0" highlightColor="0xFFFFFF" knockout="false" quality="3" shadowAlpha="1.0" shadowColor="0x000000" strength="1" type="inner"/>
+		</s:filters>
+		<s:fill>
+			<s:LinearGradient rotation="60">
+				<s:GradientEntry alpha="1.0" color="#C1E3F6" ratio="0"/>
+				<s:GradientEntry alpha="1.0" color="#89B6CE" ratio="1"/>
+			</s:LinearGradient>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="0x65879A" joints="miter" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Ellipse>
+	<!-- <s:Ellipse height="5" width="5" x="5" y="5">
+		<s:fill>
+			<s:SolidColor color="#4788aa"/>
+		</s:fill>
+		<s:filters>
+			<s:DropShadowFilter alpha="0.75" angle="45.0" blurX="8" blurY="8" color="0x000000" distance="3" hideObject="false" inner="true" knockout="false" quality="3" strength="1"/>
+		</s:filters>
+	</s:Ellipse> -->
+</s:SparkSkin>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+
+    ADOBE SYSTEMS INCORPORATED
+    Copyright 2008 Adobe Systems Incorporated
+    All Rights Reserved.
+
+    NOTICE: Adobe permits you to use, modify, and distribute this file
+    in accordance with the terms of the license agreement accompanying it.
+
+-->
+
+<!--- The default skin class for the thumb of a Spark HScrollBar component.  
+
+       @see spark.components.HScrollBar
+        
+      @langversion 3.0
+      @playerversion Flash 10
+      @playerversion AIR 1.5
+      @productversion Flex 4
+-->
+<s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
+    xmlns:fb="http://ns.adobe.com/flashbuilder/2009" minHeight="16">
+
+    <fx:Metadata>
+    <![CDATA[ 
+        /** 
+         * @copy spark.skins.spark.ApplicationSkin#hostComponent
+         */
+        [HostComponent("spark.components.Button")]
+    ]]>
+    </fx:Metadata> 
+    
+    <fx:Script fb:purpose="styling">
+        /**
+         * @private
+         */
+        override protected function initializationComplete():void
+        {
+            useChromeColor = true;
+            super.initializationComplete();
+        }
+    </fx:Script>
+    
+    <s:states>
+        <s:State name="up" />
+        <s:State name="over" />
+        <s:State name="down" />
+        <s:State name="disabled" />
+    </s:states>
+	
+	<s:Path data="M 0 3.834 C 0 3.834 3.505 0 7.011 0 C 10.516 0 14.022 3.834 14.022 3.834 L 14.022 56.167 C 14.022 56.167 10.516 60 7.011 60 C 3.505 60 0 56.167 0 56.167 L 0 3.834 Z" rotation="90" top="0" left="0" right="0" bottom="0">
+		<s:fill>
+			<s:LinearGradient rotation="0">
+				<!-- <s:GradientEntry alpha="1.0" color="#CFD5DA" ratio="0"/>
+								<s:GradientEntry alpha="1.0" color="#969A9E" ratio="1"/> -->
+				<s:GradientEntry alpha="1.0" color="#C1E3F6" ratio="0"/>
+				<s:GradientEntry alpha="1.0" color="#89B6CE" ratio="1"/>
+			</s:LinearGradient>
+		</s:fill>
+		<s:stroke>
+			<s:SolidColorStroke caps="none" color="#666666" joints="round" miterLimit="4" weight="1"/>
+		</s:stroke>
+	</s:Path>
+</s:SparkSkin>
