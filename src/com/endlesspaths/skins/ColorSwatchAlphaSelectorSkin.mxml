@@ -12,6 +12,7 @@
 		}
 		
 		protected function toggleColorEditor_Init():void {
+			colorSwatchPreview.addEventListener(MouseEvent.CLICK, toggleColorEditor_Click);
 			toggleColorEditor.addEventListener(MouseEvent.CLICK, toggleColorEditor_Click);
 		}
 		
@@ -74,7 +75,7 @@
 				</s:Graphic>
 				<ep:AutoPopUpAnchor id="colorEditorPopup" popUpPosition="below" left="-5" top="10" priority="100">
 					<ep:CalloutPanel id="colorEditorPanel" height="250" width="280"  arrowPosition="top">
-						<ep:ColorSelector id="colorEditor"  selectedColor="@{hostComponent.selectedColor}" width="100%" height="100%" />
+						<ep:ColorSelector id="colorEditor" selectedColor="@{hostComponent.selectedColor}" width="100%" height="100%" />
 					</ep:CalloutPanel>
 				</ep:AutoPopUpAnchor>
 			</s:Group>

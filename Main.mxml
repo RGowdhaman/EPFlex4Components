@@ -40,7 +40,7 @@
 		</s:ArrayList>
 	</fx:Declarations>
 	
-	<fx:Script><![CDATA[
+	<!-- <fx:Script><![CDATA[
 	
 	import mx.controls.Alert;
 	import com.endlesspaths.components.*;
@@ -51,7 +51,7 @@
 		someColors.addItem(new GradientColorEntry(1.0, rand_color, Math.random()));
 	}
 	
-	]]></fx:Script>
+	]]></fx:Script> -->
 	
 	<s:Group verticalCenter="0" horizontalCenter="0">
 		<s:layout>
@@ -79,10 +79,13 @@
 				        </s:TextArea>
 			</s:Group> -->
 		
-		<s:Button label="add color" click="add_random_color(event)" />
-		<ep:GradientSelector id="gradientThingie" width="300" height="50" selectedColors="@{someColors}" />
+		<!-- <s:Button label="add color" click="add_random_color(event)" /> -->
+		<!-- <ep:GradientSelector id="gradientThingie" width="300" height="50" selectedColors="@{someColors}" /> -->
 		
-		<s:List dataProvider="{toolbarArrList}" height="200" width="100" />
+		<ep:ColorSwatchAlphaSelector />
+		<ep:ColorSelector />
+		
+		<!-- <s:List dataProvider="{toolbarArrList}" height="200" width="100" /> -->
 		
 		<!-- <s:HScrollBar width="250" /> -->
 		<!-- <s:VScrollBar height="250" /> -->

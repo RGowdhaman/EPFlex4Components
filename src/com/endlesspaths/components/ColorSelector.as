@@ -3,6 +3,7 @@ package com.endlesspaths.components
 	import flash.display.Stage;
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
+	import mx.events.PropertyChangeEvent;
 	import flash.display.BitmapData;
 	import flash.ui.Mouse;
 	import mx.managers.CursorManager;
@@ -12,6 +13,7 @@ package com.endlesspaths.components
 	import spark.components.Group;
 	import spark.components.SkinnableContainer;
 	import spark.components.supportClasses.SkinnableComponent;
+	import spark.components.TextInput;
 	
 	import com.endlesspaths.skins.*;
 	
@@ -21,17 +23,20 @@ package com.endlesspaths.components
 		public var selectedColor:Number = 0x00F300;
 		
 		[Bindable]
-		public var selectedColor_Red:Number = 0;
+		public var selectedColor_Red:String = "0";
 		[Bindable]
-		public var selectedColor_Green:Number = 255;
+		public var selectedColor_Green:String = "255";
 		[Bindable]
-		public var selectedColor_Blue:Number = 0;
+		public var selectedColor_Blue:String = "0";
 		
 		[Bindable]
 		public var selectedColorAsHex:String = "00F300";
 		
 		[Bindable]
 		public var selectedHue:Number = 0x00F300;
+		
+		[Bindable]
+		public var textColor:Number = 0xEFEFEF;
 		
 		[SkinPart(required=true)]
 		public var colorBox:Group;
@@ -55,6 +60,8 @@ package com.endlesspaths.components
 			super();
 			
 			setStyle("skinClass", Class(ColorSelectorSkin));
+			
+			addEventListener(PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged, false, 0, true);
 		}
 		
 		override protected function getCurrentSkinState():String {
@@ -84,6 +91,19 @@ package com.endlesspaths.components
 			
 			if (instance == contentGroup) {
 				// TODO: Maybe something goes here.
+			}
+		}
+		
+		protected function boundPropertyChanged(event:PropertyChangeEvent):void {
+			if (event.property == "selectedColor_Red" || event.property == "selectedColor_Green" || event.property == "selectedColor_Blue") {
+				var color:Number = 0xff;
+				var r:Number = parseInt(selectedColor_Red);
+				var g:Number = parseInt(selectedColor_Green);
+				var b:Number = parseInt(selectedColor_Blue);
+				
+				updateSelectedColorValues(r << 16 | g << 8 | b);
+			} else if(event.property == "selectedColorAsHex") {
+				updateSelectedColorValues(parseInt("0x"+ selectedColorAsHex));
 			}
 		}
 		
@@ -128,21 +148,32 @@ package com.endlesspaths.components
 		private function updateSelectedColor(x:uint, y:uint):void {
 			localMouseX = x;
 			localMouseY = y;
+			
+			if(localMouseX < 0) localMouseX = 0;
+			if(localMouseX > colorBox.width - 2) localMouseX = colorBox.width - 2;
+			
+			if(localMouseY < 0) localMouseY = 0;
+			if(localMouseY > colorBox.height - 2) localMouseY = colorBox.height - 2;
+			
 			var bmap:BitmapData = new BitmapData(colorBox.width, colorBox.height, false);
 			bmap.draw(colorBox);
 			
-			colorBoxSelector.y = y;
-			colorBoxSelector.x = x;
+			colorBoxSelector.y = localMouseY;
+			colorBoxSelector.x = localMouseX;
 			
 			updateSelectedColorValues(bmap.getPixel(colorBoxSelector.x, colorBoxSelector.y));
 		}
 		
 		private function updateSelectedColorValues(color:Number):void {
+			removeEventListener(PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged);
+			
 			selectedColor = color;
-			selectedColor_Red = (selectedColor & 0xff0000) >> 16;
-			selectedColor_Green = (selectedColor & 0x00ff00) >> 8;
-			selectedColor_Blue = (selectedColor & 0x0000ff);
+			selectedColor_Red = ((selectedColor >> 16) & 0xff).toString(10);
+			selectedColor_Green = ((selectedColor >> 8) & 0xff).toString(10);
+			selectedColor_Blue = (selectedColor & 0xff).toString(10);
 			selectedColorAsHex = selectedColor.toString(16).toUpperCase();
+			
+			addEventListener(PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged, false, 0, true);
 		}
 		
 		public function updateSelectedHue(x:uint, y:uint):void {
@@ -197,6 +228,8 @@ package com.endlesspaths.components
 		private function colorHues_MouseUp(event:MouseEvent):void {
 			colorHues.removeEventListener(MouseEvent.MOUSE_UP, colorHues_MouseUp);
 			colorHues.removeEventListener(MouseEvent.MOUSE_MOVE, colorHues_MouseMove);
+			
+			updateSelectedHue(event.localX, event.localY);
 		}
 		
 		private function colorHues_MouseMove(event:MouseEvent):void {
