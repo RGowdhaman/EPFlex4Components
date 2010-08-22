@@ -141,7 +141,7 @@
 		</s:Line>
 	</s:Graphic>
 	
-	<s:ButtonBar width="100" selectedIndex="@{hostComponent.selectionAlignment}" enabled.disabled="false" skinClass="com.endlesspaths.skins.ImageButtonBarSkin">
+	<s:ButtonBar width="100" selectedIndex="@{hostComponent.selectionAlignmentIndex}" enabled.disabled="false" skinClass="com.endlesspaths.skins.ImageButtonBarSkin">
 		<s:dataProvider>
 			<s:ArrayList>
 				<fx:Object type="left" icon="@Embed('/assets/text-editor/format-justify-left.png')" />

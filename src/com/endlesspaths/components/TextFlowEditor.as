@@ -21,7 +21,8 @@ package com.endlesspaths.components
 	public class TextFlowEditor extends SkinnableComponent {
 		[Bindable]public var disabled:Boolean = false;
 		
-		[Bindable]public var selectionAlignment:Number = 0;
+		[Bindable]public var selectionAlignmentIndex:Number = 0;
+		[Bindable]public var selectionAlignment:String = "left";
 		[Bindable]public var selectionFontFamily:String = "Arial";
 		[Bindable]public var selectionFontSize:Number = 10;
 		[Bindable]public var selectionFontColor:Number = 0x000000;
@@ -64,23 +65,43 @@ package com.endlesspaths.components
 					break;
 			}
 			
-			if(_editor == null) {
-				return;
-			}
-			
 			switch(event.property) {
-				case "selectionAlignment":
-					switch(selectionAlignment) {
+				case "selectionAlignmentIndex":
+					switch(selectionAlignmentIndex) {
 						case 0:
+							selectionAlignment = "left";
 							applyFormat("textAlign", TextAlign.LEFT);
 							break;
 						case 1:
+							selectionAlignment = "center";
 							applyFormat("textAlign", TextAlign.CENTER);
 							break;
 						case 2:
+							selectionAlignment = "right";
 							applyFormat("textAlign", TextAlign.RIGHT);
 							break;
 						case 3:
+							selectionAlignment = "justify";
+							applyFormat("textAlign", TextAlign.JUSTIFY);
+							break;
+					}
+					break;
+				case "selectionAlignment":
+					switch(selectionAlignment) {
+						case "left":
+							selectionAlignmentIndex = 0;
+							applyFormat("textAlign", TextAlign.LEFT);
+							break;
+						case "center":
+							selectionAlignmentIndex = 1;
+							applyFormat("textAlign", TextAlign.CENTER);
+							break;
+						case "right":
+							selectionAlignmentIndex = 2;
+							applyFormat("textAlign", TextAlign.RIGHT);
+							break;
+						case "justify":
+							selectionAlignmentIndex = 3;
 							applyFormat("textAlign", TextAlign.JUSTIFY);
 							break;
 					}
@@ -115,19 +136,24 @@ package com.endlesspaths.components
 		
 			switch (txtLayFmt.textAlign) {
 				case TextAlign.LEFT:
-					selectionAlignment = 0;
+					selectionAlignmentIndex = 0;
+					selectionAlignment = "left";
 					break;
 				case TextAlign.CENTER:
-					selectionAlignment = 1;
+					selectionAlignmentIndex = 1;
+					selectionAlignment = "center";
 					break;
 				case TextAlign.RIGHT:
-					selectionAlignment = 2;
+					selectionAlignmentIndex = 2;
+					selectionAlignment = "right";
 					break;
 				case TextAlign.JUSTIFY:
-					selectionAlignment = 3;
+					selectionAlignmentIndex = 3;
+					selectionAlignment = "justify";
 					break;
 				default:
-					selectionAlignment = -1;
+					selectionAlignmentIndex = 0;
+					selectionAlignment = "left";
 					break;
 			}
 		
