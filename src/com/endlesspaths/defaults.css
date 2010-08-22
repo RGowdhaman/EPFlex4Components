@@ -30,6 +30,14 @@ CalloutPanel {
 	skinClass: ClassReference("com.endlesspaths.skins.CalloutPanelBlackHUDSkin");
 }
 
+ColorSelector {
+	skinClass: ClassReference("com.endlesspaths.skins.ColorSelectorSkin");
+}
+
 GradientSelectorThumb {
 	skinClass: ClassReference("com.endlesspaths.skins.GradientSelectorThumbSkin");
+}
+
+ImageButton {
+	skinClass: ClassReference("com.endlesspaths.skins.ImageButtonPlain");
 }

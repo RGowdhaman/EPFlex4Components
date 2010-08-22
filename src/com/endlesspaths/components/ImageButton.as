@@ -29,7 +29,7 @@ package com.endlesspaths.components
 		public function ImageButton() {
 			super();
 			
-			setStyle("skinClass", Class(ImageButtonSkin));
+			setStyle("skinClass", Class(ImageButtonPlain));
 		}
 	}
 }

@@ -80,7 +80,7 @@
 				</ep:AutoPopUpAnchor>
 			</s:Group>
 		</s:Group>
-		<s:Group visible="{!hostComponent.hideAlpha}">
+		<s:Group visible="{!hostComponent.hideAlpha}" includeInLayout="{!hostComponent.hideAlpha}">
 			<s:layout>
 				<s:HorizontalLayout />
 			</s:layout>
