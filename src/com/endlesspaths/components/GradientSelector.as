@@ -2,6 +2,8 @@ package com.endlesspaths.components
 {
 	import mx.collections.ArrayList;
 	import mx.events.CollectionEvent;
+	import mx.events.CollectionEventKind;
+	import mx.events.PropertyChangeEvent;
 	import flash.events.MouseEvent;
 	import mx.events.ItemClickEvent;
 	import mx.events.SandboxMouseEvent;
@@ -25,37 +27,12 @@ package com.endlesspaths.components
 	import com.endlesspaths.skins.*;
 	
 	public class GradientSelector extends SkinnableComponent
-	{
-		[Bindable(Event.CHANGE)]
-		public function get selectedColors():Array {
-			var _list:Array = new Array();
-			
-			for(var i:int = 0; i < gradientThumbs.numElements; i++) {
-				if(gradientThumbs.getElementAt(i) is GradientSelectorThumb && gradientThumbs.getElementAt(i).visible) {
-					var elem:GradientSelectorThumb = gradientThumbs.getElementAt(i) as GradientSelectorThumb;
-					_list.push({
-						alpha: elem.selectedAlpha,
-						color: elem.selectedColor,
-						ratio: elem.selectedRatio
-					});
-				}
-			}
-			
-			_list.sortOn('ratio');
-			
-			return _list;
-		}
-		
-		private var _selectedColors:Array;
-		public function set selectedColors(_list:Array):void {
-			_selectedColors = _list;
-			
-			for(var i:int = 0; i < _list.length; i++) {
-				addNewGradientThumb(_list[i].color, _list[i].alpha, _list[i].ratio);
-			}
-			
-			_thumbPositionsDirty = true;
-		}
+	{	
+		[Bindable]
+		public var selectedColors:ArrayList = new ArrayList([
+			new GradientColorEntry(1.0, 0xFFAA00, 0.0),
+			new GradientColorEntry(1.0, 0xFFAAFF, 0.0)
+		]);
 		
 		[Bindable]
 		public var selectedThumb:GradientSelectorThumb;
@@ -81,9 +58,7 @@ package com.endlesspaths.components
 			
 			setStyle("skinClass", Class(GradientSelectorSkin));
 			
-			selectedColors = new Array({alpha: 1.0, color: 0xFFAA00, ratio: 0.0},
-										{alpha: 1.0, color: 0xFFAAFF, ratio: 1.0});
-			
+			addEventListener(PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged, false, 0, true);
 		}
 		
 		override protected function partAdded(partName:String, instance:Object):void {
@@ -92,9 +67,50 @@ package com.endlesspaths.components
 			if(instance == gradientTrackContainer) {
 				gradientTrackContainer.addEventListener(MouseEvent.CLICK, gradientTrack_Click);
 			} else if(instance == gradientThumbs || instance == gradientTrack) {
-				selectedColors = _selectedColors;
+				for(var i:int = 0; i < selectedColors.length; i++) {
+					var colorObj:GradientColorEntry = selectedColors.getItemAt(i) as GradientColorEntry;
+					addGradientThumb(colorObj);
+				}
+				
 				invalidateDisplayList();
 			}
+		}
+		
+		protected function boundPropertyChanged(event:PropertyChangeEvent):void {
+			if (event.property == "selectedColors" && selectedColors != null) {
+				selectedColors.addEventListener(CollectionEvent.COLLECTION_CHANGE, selectedColors_Change);
+			}
+		}
+		
+		protected function selectedColors_Change(event:CollectionEvent):void {
+			var i:int;
+			
+			if(event.kind == CollectionEventKind.ADD) {
+				for(i = 0; i < event.items.length; i++) {
+					addGradientThumb(event.items[i]);
+				}
+			} else if(event.kind == CollectionEventKind.REMOVE) {
+				for(i = 0; i < event.items.length; i++) {
+					var gradientData:GradientColorEntry = event.items[i] as GradientColorEntry;
+					var foundThumb:Boolean = false;
+					for(i = 0; i < gradientThumbs.numElements; i++) {
+						
+						if(gradientThumbs.getElementAt(i) is GradientSelectorThumb) {
+							var elem:GradientSelectorThumb = gradientThumbs.getElementAt(i) as GradientSelectorThumb;
+							
+							if(elem.gradientData == gradientData) {
+								removeGradientThumb(elem);
+								foundThumb = true;
+								break;
+							}
+						}
+					}
+				}
+			} else if(event.kind == CollectionEventKind.REMOVE) {
+				// do nothing?
+			}
+			
+			updateGradientTrack();
 		}
 		
 		override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void {
@@ -109,7 +125,7 @@ package com.endlesspaths.components
 				for(var i:int = 0; i < gradientThumbs.numElements; i++) {
 					if(gradientThumbs.getElementAt(i) is GradientSelectorThumb) {
 						var elem:GradientSelectorThumb = gradientThumbs.getElementAt(i) as GradientSelectorThumb;
-						var newX:int = (trackWidth - (elem.width / 2)) * elem.selectedRatio;
+						var newX:int = (trackWidth - (elem.width / 2)) * elem.gradientData.ratio;
 						if(newX > trackWidth) {
 							newX = trackWidth - 1;
 						}
@@ -126,7 +142,7 @@ package com.endlesspaths.components
 			var g:Graphics = gradientTrack.graphics;
 			g.clear();
 			
-			if(selectedColors.length == 0) {
+			if(!selectedColors || selectedColors.length == 0) {
 				return;
 			}
 			
@@ -134,10 +150,24 @@ package com.endlesspaths.components
 			var alphas:Array = new Array();
 			var ratios:Array = new Array();
 			
-			for(var i:int = 0; i < selectedColors.length; i++) {
-				colors.push(selectedColors[i].color);
-				alphas.push(selectedColors[i].alpha);
-				ratios.push(selectedColors[i].ratio * 255);
+			var _selectedColors:Array = new Array();
+			
+			var i:int;
+			
+			for(i = 0; i < gradientThumbs.numElements; i++) {
+				if(gradientThumbs.getElementAt(i) is GradientSelectorThumb) {
+					var elem:GradientSelectorThumb = gradientThumbs.getElementAt(i) as GradientSelectorThumb;
+					_selectedColors.push(elem.gradientData);
+				}
+			}
+			
+			_selectedColors.sortOn('ratio')
+			
+			for(i = 0; i < _selectedColors.length; i++) {
+				var colorObj:Object = _selectedColors[i];
+				colors.push(colorObj.color);
+				alphas.push(colorObj.alpha);
+				ratios.push(colorObj.ratio * 255);
 			}
 			
 			var mat:Matrix = new Matrix();
@@ -150,17 +180,17 @@ package com.endlesspaths.components
 		private function gradientTrack_Click(event:MouseEvent):void {
 			var xRatio:Number = event.localX / gradientTrack.getLayoutBoundsWidth();
 			
-			addNewGradientThumb(0x000000, 1.0, xRatio);
-			
-			updateGradientTrack();
-			
-			dispatchEvent(new Event(Event.CHANGE));
+			selectedColors.addItem(new GradientColorEntry(1.0, 0x000000, xRatio));
 		}
 		
 		private function gradientThumb_Change(event:Event):void {
-			updateGradientTrack();
+			/*selectedThumb = event.target as GradientSelectorThumb;
 			
-			dispatchEvent(new Event(Event.CHANGE));
+			var change:CollectionEvent = new CollectionEvent(CollectionEvent.COLLECTION_CHANGE);
+			change.kind = CollectionEventKind.UPDATE;
+			change.items = [selectedThumb,];
+			
+			selectedColors.dispatchEvent(change);*/
 		}
 		
 		protected function pointToValue(x:Number, y:Number):Number
@@ -180,8 +210,6 @@ package com.endlesspaths.components
 			systemManager.getSandboxRoot().addEventListener(MouseEvent.MOUSE_MOVE, system_mouseMoveHandler, true);
 			systemManager.getSandboxRoot().addEventListener(MouseEvent.MOUSE_UP, system_mouseUpHandler, true);
 			systemManager.getSandboxRoot().addEventListener(SandboxMouseEvent.MOUSE_UP_SOMEWHERE, system_mouseUpHandler);
-			
-			dispatchEvent(new FlexEvent(FlexEvent.CHANGE_START));
 		}
 		
 		protected function system_mouseMoveHandler(event:MouseEvent):void {
@@ -198,14 +226,13 @@ package com.endlesspaths.components
 				newValue = 1.0;
 			}
 			
-			if (newValue != selectedThumb.selectedRatio) {
+			if (newValue != selectedThumb.gradientData.ratio) {
 				var newWidth:int = (gradientThumbs.getLayoutBoundsWidth() - (selectedThumb.getLayoutBoundsWidth() / 2)) * newValue;
 				if(newWidth > gradientTrack.getLayoutBoundsWidth()) {
 					newWidth = gradientTrack.getLayoutBoundsWidth() - 1;
 				}
 				selectedThumb.x = newWidth;
-				selectedThumb.selectedRatio = newValue;
-				dispatchEvent(new Event(Event.CHANGE));
+				selectedThumb.gradientData.ratio = newValue;
 			}
 			
 			event.updateAfterEvent();
@@ -223,38 +250,35 @@ package com.endlesspaths.components
 			systemManager.getSandboxRoot().removeEventListener(MouseEvent.MOUSE_MOVE, system_mouseMoveHandler, true);
 			systemManager.getSandboxRoot().removeEventListener(MouseEvent.MOUSE_UP, system_mouseUpHandler, false);
 			systemManager.getSandboxRoot().removeEventListener(SandboxMouseEvent.MOUSE_UP_SOMEWHERE, system_mouseUpHandler);
-		
-			dispatchEvent(new FlexEvent(FlexEvent.CHANGE_END));
 			
 			if(!selectedThumb.visible) {
-				removeGradientThumb(selectedThumb);
+				selectedColors.removeItem(selectedThumb.gradientData);
 			}
 			
 			selectedThumb = null;
 		}
 		
-		private function addNewGradientThumb(_color:uint, _alpha:Number, _ratio:Number):GradientSelectorThumb {
+		private function addGradientThumb(colorData:GradientColorEntry):GradientSelectorThumb {
 			if(!gradientThumbs || !gradientTrack) {
 				return null;
 			}
 			
 			var elem:GradientSelectorThumb = new GradientSelectorThumb();
-			elem.setStyle("skinClass", Class(GradientSelectorThumbSkin));
-			elem.selectedAlpha = _alpha;
-			elem.selectedColor = _color;
-			elem.selectedRatio = _ratio;
+			elem.gradientData = colorData;
 			
 			gradientThumbs.addElement(elem);
 			
 			var trackWidth:int = gradientTrack.width;
-			var newX:int = (trackWidth - (elem.width / 2)) * _ratio;
+			var newX:int = (trackWidth - (elem.width / 2)) * elem.gradientData.ratio;
 			if(newX > trackWidth) {
 				newX = trackWidth - 1;
 			}
 			elem.move(newX, 0);
-			
+		
 			elem.addEventListener(Event.CHANGE, gradientThumb_Change);
 			elem.addEventListener(MouseEvent.MOUSE_DOWN, gradientThumb_MouseDown, false, 0);
+			
+			_thumbPositionsDirty = true;
 			
 			return elem;
 		}
@@ -263,11 +287,10 @@ package com.endlesspaths.components
 			if(thumb) {
 				thumb.removeEventListener(Event.CHANGE, gradientThumb_Change);
 				thumb.removeEventListener(MouseEvent.MOUSE_DOWN, gradientThumb_MouseDown);
+				
 				gradientThumbs.removeElement(thumb);
 				
 				thumb = null;
-				
-				invalidateDisplayList();
 			}
 		}
 	}

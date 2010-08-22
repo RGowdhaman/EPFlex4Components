@@ -22,13 +22,7 @@ package com.endlesspaths.components
 	public class GradientSelectorThumb extends Button
 	{
 		[Bindable]
-		public var selectedColor:Number = 0x000000;
-		
-		[Bindable]
-		public var selectedAlpha:Number = 1.0;
-		
-		[Bindable]
-		public var selectedRatio:Number = 0.5;
+		public var gradientData:GradientColorEntry;
 		
 		[SkinPart]
 		public var colorEditorPopup:AutoPopUpAnchor;
@@ -36,12 +30,9 @@ package com.endlesspaths.components
 		public function GradientSelectorThumb() {
 			super();
 			
-			addEventListener(PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged);
+			setStyle("skinClass", Class(GradientSelectorThumbSkin));
+			
 			addEventListener(MouseEvent.MOUSE_DOWN, colorEditorPopup_MouseDown);
-		}
-		
-		private function boundPropertyChanged(event:PropertyChangeEvent):void {
-			dispatchEvent(new Event(Event.CHANGE));
 		}
 		
 		private function colorEditorPopup_Click(event:MouseEvent):void {

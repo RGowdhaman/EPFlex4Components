@@ -1,25 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<!--
-
-    ADOBE SYSTEMS INCORPORATED
-    Copyright 2008 Adobe Systems Incorporated
-    All Rights Reserved.
-
-    NOTICE: Adobe permits you to use, modify, and distribute this file
-    in accordance with the terms of the license agreement accompanying it.
-
--->
-
-<!--- The default skin class for the thumb of a Spark HScrollBar component.  
-
-       @see spark.components.HScrollBar
-        
-      @langversion 3.0
-      @playerversion Flash 10
-      @playerversion AIR 1.5
-      @productversion Flex 4
--->
 <s:SparkSkin xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark"
     xmlns:fb="http://ns.adobe.com/flashbuilder/2009" minHeight="16">
 
@@ -49,20 +28,56 @@
         <s:State name="down" />
         <s:State name="disabled" />
     </s:states>
-	
-	<s:Path data="M 0 3.834 C 0 3.834 3.505 0 7.011 0 C 10.516 0 14.022 3.834 14.022 3.834 L 14.022 56.167 C 14.022 56.167 10.516 60 7.011 60 C 3.505 60 0 56.167 0 56.167 L 0 3.834 Z" rotation="90" top="0" left="0" right="0" bottom="0">
-		<s:fill>
-			<s:LinearGradient rotation="0">
-				<!-- <s:GradientEntry alpha="1.0" color="#CFD5DA" ratio="0"/>
-								<s:GradientEntry alpha="1.0" color="#969A9E" ratio="1"/> -->
-				<s:GradientEntry alpha="1.0" color="#C1E3F6" ratio="0"/>
-				<s:GradientEntry alpha="1.0" color="#89B6CE" ratio="1"/>
-			</s:LinearGradient>
-		</s:fill>
-		<s:stroke>
-			<s:SolidColorStroke caps="none" color="#666666" joints="round" miterLimit="4" weight="1"/>
-		</s:stroke>
-	</s:Path>
+
+
+	<s:Group top="0" bottom="0" left="0" right="0">
+		<s:Path data="M 8.334 15.5 L 4.333 15.5 C 4.333 15.5 0.5 11.749 0.5 8 C 0.5 4.249 4.333 0.5 4.333 0.5 L 8.334 0.5 L 8.334 15.5 Z" rotation="0" left="0" top="0" bottom="0" width="6">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:entries>
+						<s:GradientEntry alpha="1.0" color="#C1E3F6" color.over="#d7edf9" color.down="#89B6CE" ratio="0"/>
+						<s:GradientEntry alpha="1.0" color="#89B6CE" color.over="#89B6CE" color.down="#C1E3F6" ratio="1"/>
+					</s:entries>
+				</s:LinearGradient>
+			</s:fill>
+			<s:stroke>
+				<s:SolidColorStroke alpha="1.0" caps="none" color="#666666" joints="miter" miterLimit="4" weight="1"/>
+			</s:stroke>
+		</s:Path>
+		<s:Path data="M 8.334 15.5 L 4.333 15.5 C 4.333 15.5 0.5 11.749 0.5 8 C 0.5 4.249 4.333 0.5 4.333 0.5 L 8.334 0.5 L 8.334 15.5 Z" rotation="180" right="0" top="0" bottom="0" width="6">
+			<s:fill>
+				<s:LinearGradient rotation="-90">
+					<s:entries>
+						<s:GradientEntry alpha="1.0" color="#C1E3F6" color.over="#d7edf9" color.down="#89B6CE" ratio="0"/>
+						<s:GradientEntry alpha="1.0" color="#89B6CE" color.over="#89B6CE" color.down="#C1E3F6" ratio="1"/>
+					</s:entries>
+				</s:LinearGradient>
+			</s:fill>
+			<s:stroke>
+				<s:SolidColorStroke caps="none" color="#666666" joints="round" miterLimit="4" weight="1"/>
+			</s:stroke>
+		</s:Path>
+		<s:Rect left="5" right="5" top="1" bottom="1">
+			<s:fill>
+				<s:LinearGradient rotation="90">
+					<s:entries>
+						<s:GradientEntry alpha="1.0" color="#C1E3F6" color.over="#d7edf9" color.down="#89B6CE" ratio="0"/>
+						<s:GradientEntry alpha="1.0" color="#89B6CE" color.over="#89B6CE" color.down="#C1E3F6" ratio="1"/>
+					</s:entries>
+				</s:LinearGradient>
+			</s:fill>
+		</s:Rect>
+		<s:Line left="6" bottom="0" right="6">
+			<s:stroke>
+				<s:SolidColorStroke alpha="1.0" caps="none" color="#666666" joints="miter" miterLimit="4" weight="1"/>
+			</s:stroke>
+		</s:Line>
+		<s:Line left="6" top="0" right="6">
+			<s:stroke>
+				<s:SolidColorStroke alpha="1.0" caps="none" color="#666666" joints="miter" miterLimit="4" weight="1"/>
+			</s:stroke>
+		</s:Line>
+	</s:Group>
 	
 	<s:Line yTo="8" horizontalCenter="0" verticalCenter="0" top="4" bottom="4" width="0">
 		<s:stroke>

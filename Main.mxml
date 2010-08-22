@@ -33,8 +33,25 @@
 			<fx:Object label="1 Flash Player" image="@Embed('/assets/fl_player_appicon-tn.gif')" />
 			<fx:Object label="1 Fireworks" image="@Embed('/assets/fw_appicon-tn.gif')" />
 		</s:ArrayList>
+		
+		<s:ArrayList id="someColors">
+			<!-- <fx:Object color="0x00ff00" alpha="1.0" ratio="0.0" />
+			<fx:Object color="0x0000FF" alpha="1.0" ratio="1.0" /> -->
+		</s:ArrayList>
 	</fx:Declarations>
 	
+	<fx:Script><![CDATA[
+	
+	import mx.controls.Alert;
+	import com.endlesspaths.components.*;
+	
+	private function add_random_color(event:Event):void {
+		var rand_color = Math.floor(Math.random()*(1+0xFFFFFF-0x000000))+0x000000;
+		
+		someColors.addItem(new GradientColorEntry(1.0, rand_color, Math.random()));
+	}
+	
+	]]></fx:Script>
 	
 	<s:Group verticalCenter="0" horizontalCenter="0">
 		<s:layout>
@@ -62,7 +79,8 @@
 				        </s:TextArea>
 			</s:Group> -->
 		
-		<!-- <ep:GradientSelector width="300" height="50" /> -->
+		<s:Button label="add color" click="add_random_color(event)" />
+		<ep:GradientSelector id="gradientThingie" width="300" height="50" selectedColors="@{someColors}" />
 		
 		<s:List dataProvider="{toolbarArrList}" height="200" width="100" />
 		

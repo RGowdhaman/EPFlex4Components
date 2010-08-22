@@ -18,12 +18,16 @@
         <s:State name="down" />
         <s:State name="disabled" />
     </s:states>
-	<s:Group top="0" left="0" right="0" bottom="0">
-		<s:Path data="M 0 0 L 14.01 0 L 14.01 20.334 C 14.01 20.334 10.392 16 6.834 16 C 3.389 16 0 20.334 0 20.334 L 0 0 Z" rotation="180" x.over="0" x.down="0" x.disabled="0" right.up="0" width.over="15" width.down="15" width.disabled="15" left.up="0" y.over="0" y.down="0" y.disabled="0" top.up="0" height.over="20" height.down="20" height.disabled="20" bottom.up="0">
+	
+	<s:Group top="0" left="0" right="0" rotation="0" bottom="0">
+		<s:layout.up>
+			<s:BasicLayout/>
+		</s:layout.up>
+		<s:Path data="M 0 0 L 14.01 0 L 14.01 20.334 C 14.01 20.334 10.392 16 6.834 16 C 3.389 16 0 20.334 0 20.334 L 0 0 Z" rotation="180" left="0" right="0" top="0" bottom="0">
 			<s:fill>
 				<s:LinearGradient rotation="180">
-					<s:GradientEntry alpha="1.0" color="#BDBDBD" ratio="0"/>
-					<s:GradientEntry alpha="1.0" color="#DDDDDD" ratio="1"/>
+					<s:GradientEntry alpha="1.0" color="#AAAAAA" color.over="#BBBBBB" color.down="#DDDDDD" ratio="0"/>
+					<s:GradientEntry alpha="1.0" color="#DDDDDD" color.over="#eaeaea" color.down="#BDBDBD" ratio="1"/>
 				</s:LinearGradient>
 			</s:fill>
 			<s:stroke>
@@ -32,8 +36,9 @@
 		</s:Path>
 		<s:Path data="M 3.492 0 L 0 8.087 L 6.984 8.087 L 3.492 0" height="7" width="8" rotation="180" horizontalCenter="0" verticalCenter="2">
 			<s:fill>
-				<s:SolidColor color="#333333"/>
+				<s:SolidColor color="#333333" color.disabled="#777777" color.over="#222222" />
 			</s:fill>
 		</s:Path>
 	</s:Group>
+	
 </s:SparkSkin>

@@ -33,14 +33,14 @@
 			</s:Rect>
 			<s:Rect top="7" left="2" right="2" bottom="2">
 				<s:fill>
-					<s:SolidColor alpha="{hostComponent.selectedAlpha}" color="{hostComponent.selectedColor}"/>
+					<s:SolidColor alpha="{hostComponent.gradientData.alpha}" color="{hostComponent.gradientData.color}"/>
 				</s:fill>
 			</s:Rect>
 		</s:Graphic>
 	</s:Group>
 	<ep:AutoPopUpAnchor id="colorEditorPopup" displayPopUp="false" popUpPosition="below" enabled="true" top="10" left="-5">
 		<ep:CalloutPanel id="colorEditorPanel" arrowPosition="top" title="Gradient Color">
-			<ep:ColorSwatchAlphaSelector selectedColor="@{hostComponent.selectedColor}" selectedAlpha="@{hostComponent.selectedAlpha}"  />
+			<ep:ColorSwatchAlphaSelector selectedColor="@{hostComponent.gradientData.color}" selectedAlpha="@{hostComponent.gradientData.alpha}"  />
 		</ep:CalloutPanel>
 	</ep:AutoPopUpAnchor>
 </s:Skin>
