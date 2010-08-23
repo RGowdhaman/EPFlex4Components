@@ -9,6 +9,14 @@
 	<fx:Metadata><![CDATA[
 		[HostComponent("spark.components.ButtonBar")]
 	]]></fx:Metadata>
+	
+	<!-- <fx:Script><![CDATA[
+		override protected function initializationComplete():void {
+			useChromeColor = true;
+			super.initializationComplete();
+		}
+	]]></fx:Script> -->
+	
 	<fx:Declarations>
 		<fx:Component id="firstButton">
 			<s:ButtonBarButton skinClass="com.endlesspaths.skins.ImageButtonBarFirstButtonSkin" />

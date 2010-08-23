@@ -11,13 +11,8 @@
 			return String(Math.round(val * 100));
 		}
 		
-		protected function toggleColorEditor_Init():void {
-			colorSwatchPreview.addEventListener(MouseEvent.CLICK, toggleColorEditor_Click);
-			toggleColorEditor.addEventListener(MouseEvent.CLICK, toggleColorEditor_Click);
-		}
-		
 		private function toggleColorEditor_Click(event:MouseEvent):void {
-			colorEditorPopup.popUpOpen = !colorEditorPopup.popUpOpen;
+			colorEditorPopup.displayPopUp = !colorEditorPopup.displayPopUp;
 			colorEditor.setColorAndHue(hostComponent.selectedColor);
 		}
 	]]></fx:Script>
@@ -41,7 +36,7 @@
 			<s:layout>
 				<s:HorizontalLayout />
 			</s:layout>
-			<s:Group id="colorSwatchPreview" width="40" height="40">
+			<s:Group id="colorSwatchPreview" width="40" height="40" click="toggleColorEditor_Click(event)" buttonMode="true" useHandCursor="true">
 				<s:Rect width="100%" height="100%">
 					<s:fill>
 						<s:BitmapFill source="@Embed('/assets/transparent-pattern.png')" fillMode="repeat" />
@@ -55,6 +50,13 @@
 						<s:SolidColorStroke caps="none" color="#999999" joints="miter" miterLimit="4" weight="1"/>
 					</s:stroke>
 				</s:Rect>
+				<s:BitmapImage source="@Embed(source='/assets/gear.png')" right="2" bottom="2" />
+				
+				<ep:StatefulPopUpAnchor id="colorEditorPopup" popUpPosition="below" left="{(colorSwatchPreview.width / 2) - 14}" bottom="8">
+					<ep:CalloutPanel id="colorEditorPanel" height="250" width="280"  arrowPosition="top">
+						<ep:ColorSelector id="colorEditor" selectedColor="@{hostComponent.selectedColor}" width="100%" height="100%" />
+					</ep:CalloutPanel>
+				</ep:StatefulPopUpAnchor>
 			</s:Group>
 			<s:Group>
 				<s:DataGroup id="swatchList" itemRenderer="com.endlesspaths.skins.ColorSwatchItemRenderer" dataProvider="{hostComponent.colorSwatches}" rollOverColor="0xFFCC00" width="160">
@@ -67,17 +69,6 @@
 						<s:SolidColorStroke caps="none" color="#999999" joints="miter" miterLimit="4" weight="1"/>
 					</s:stroke>
 				</s:Rect>
-			</s:Group>
-			<s:Group width="10" />
-			<s:Group right="0">
-				<s:Graphic id="toggleColorEditor" buttonMode="true" useHandCursor="true" initialize="toggleColorEditor_Init();">
-					<s:BitmapImage source="@Embed(source='/assets/gear.png')" verticalCenter="0" horizontalCenter="0" />
-				</s:Graphic>
-				<ep:AutoPopUpAnchor id="colorEditorPopup" popUpPosition="below" left="-5" top="10" priority="100">
-					<ep:CalloutPanel id="colorEditorPanel" height="250" width="280"  arrowPosition="top">
-						<ep:ColorSelector id="colorEditor" selectedColor="@{hostComponent.selectedColor}" width="100%" height="100%" />
-					</ep:CalloutPanel>
-				</ep:AutoPopUpAnchor>
 			</s:Group>
 		</s:Group>
 		<s:Group visible="{!hostComponent.hideAlpha}" includeInLayout="{!hostComponent.hideAlpha}">

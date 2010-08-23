@@ -18,7 +18,7 @@
 		<exec executable="killall">
 			<arg value="adl" />
 		</exec>
-		<exec executable="adl">
+		<exec executable="adl" spawn="true">
 			<arg line="${basedir}/${src.dir}/Main-app.xml" />
 			<arg line="${basedir}/${deploy.dir}"/>
 		</exec>

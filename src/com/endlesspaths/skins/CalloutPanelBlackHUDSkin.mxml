@@ -5,6 +5,7 @@
 	</fx:Metadata>
 	<s:states>
 		<s:State name="normal" />
+		<s:State name="open" />
 		<s:State name="disabled" />
 	</s:states>
 	

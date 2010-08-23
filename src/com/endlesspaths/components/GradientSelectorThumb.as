@@ -32,16 +32,16 @@ package com.endlesspaths.components
 			
 			setStyle("skinClass", Class(GradientSelectorThumbSkin));
 			
-			addEventListener(MouseEvent.MOUSE_DOWN, colorEditorPopup_MouseDown);
+			addEventListener(MouseEvent.MOUSE_DOWN, colorEditorPopup_MouseDown, false, 0, true);
 		}
 		
 		private function colorEditorPopup_Click(event:MouseEvent):void {
-			colorEditorPopup.popUpOpen = !colorEditorPopup.popUpOpen;
+			colorEditorPopup.displayPopUp = !colorEditorPopup.displayPopUp;
 		}
 		
 		private function colorEditorPopup_MouseDown(event:MouseEvent):void {
-			addEventListener(MouseEvent.CLICK, colorEditorPopup_Click);
-			addEventListener(MouseEvent.MOUSE_MOVE, colorEditorPopup_MouseMove);
+			addEventListener(MouseEvent.CLICK, colorEditorPopup_Click, false, 0, true);
+			addEventListener(MouseEvent.MOUSE_MOVE, colorEditorPopup_MouseMove, false, 0, true);
 		}
 		
 		protected function colorEditorPopup_MouseMove(event:MouseEvent):void {

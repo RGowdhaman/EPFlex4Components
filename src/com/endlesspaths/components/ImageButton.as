@@ -11,20 +11,12 @@ package com.endlesspaths.components
 	
 	public class ImageButton extends Button
 	{
-		[Bindable]
-		public var image:Class;
-		
-		[Bindable]
-		public var cornerRadius:Number = 2;
-	
-		[Bindable]
-		public var text:String = "";
-
-		[Bindable]
-		public var radiusLeft:Number = cornerRadius;
-		
-		[Bindable]
-		public var radiusRight:Number = cornerRadius;
+		[Bindable]public var color:Number = 0x000000;
+		[Bindable]public var image:Class;
+		[Bindable]public var cornerRadius:Number = 2;
+		[Bindable]public var text:String = "";
+		[Bindable]public var radiusLeft:Number = cornerRadius;
+		[Bindable]public var radiusRight:Number = cornerRadius;
 		
 		public function ImageButton() {
 			super();

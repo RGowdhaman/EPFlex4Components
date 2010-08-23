@@ -1,4 +1,5 @@
 @namespace s "library://ns.adobe.com/flex/spark";
+@namespace ep "library://com.endlesspaths.skins.*";
 
 s|HScrollBar
 {
@@ -26,18 +27,18 @@ s|List
     skinClass: ClassReference("com.endlesspaths.skins.ListSkin");
 }
 
-CalloutPanel {
+ep|CalloutPanel {
 	skinClass: ClassReference("com.endlesspaths.skins.CalloutPanelBlackHUDSkin");
 }
 
-ColorSelector {
+ep|ColorSelector {
 	skinClass: ClassReference("com.endlesspaths.skins.ColorSelectorSkin");
 }
 
-GradientSelectorThumb {
+ep|GradientSelectorThumb {
 	skinClass: ClassReference("com.endlesspaths.skins.GradientSelectorThumbSkin");
 }
 
-ImageButton {
+ep|ImageButton {
 	skinClass: ClassReference("com.endlesspaths.skins.ImageButtonPlain");
 }

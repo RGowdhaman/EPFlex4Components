@@ -38,9 +38,9 @@
 			</s:Rect>
 		</s:Graphic>
 	</s:Group>
-	<ep:AutoPopUpAnchor id="colorEditorPopup" displayPopUp="false" popUpPosition="below" enabled="true" top="10" left="-5">
+	<ep:StatefulPopUpAnchor id="colorEditorPopup" displayPopUp="false" popUpPosition="below" enabled="true" top="10" left="-5">
 		<ep:CalloutPanel id="colorEditorPanel" arrowPosition="top" title="Gradient Color">
 			<ep:ColorSwatchAlphaSelector selectedColor="@{hostComponent.gradientData.color}" selectedAlpha="@{hostComponent.gradientData.alpha}"  />
 		</ep:CalloutPanel>
-	</ep:AutoPopUpAnchor>
+	</ep:StatefulPopUpAnchor>
 </s:Skin>

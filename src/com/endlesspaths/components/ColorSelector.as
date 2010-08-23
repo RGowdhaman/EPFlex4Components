@@ -3,9 +3,13 @@ package com.endlesspaths.components
 	import flash.display.Stage;
 	import flash.display.DisplayObject;
 	import flash.events.MouseEvent;
+	import mx.events.ItemClickEvent;
+	import mx.events.SandboxMouseEvent;
+	import mx.events.FlexEvent;
 	import mx.events.PropertyChangeEvent;
 	import flash.display.BitmapData;
 	import flash.ui.Mouse;
+	import flash.geom.Point;
 	import mx.managers.CursorManager;
 	import mx.managers.CursorManagerPriority;
 	import mx.utils.ColorUtil;
@@ -14,47 +18,35 @@ package com.endlesspaths.components
 	import spark.components.SkinnableContainer;
 	import spark.components.supportClasses.SkinnableComponent;
 	import spark.components.TextInput;
+	import mx.utils.HSBColor;
 	
 	import com.endlesspaths.skins.*;
 	
+	import mx.controls.Alert;
+	
 	public class ColorSelector extends SkinnableContainer
 	{
-		[Bindable]
-		public var selectedColor:Number = 0x00F300;
+		[SkinPart(required=true)]public var colorBox:Group;
+		[SkinPart(required=true)]public var colorBoxSelector:Group;
+		[SkinPart(required=true)]public var colorHues:Group;
 		
-		[Bindable]
-		public var selectedColor_Red:String = "0";
-		[Bindable]
-		public var selectedColor_Green:String = "255";
-		[Bindable]
-		public var selectedColor_Blue:String = "0";
+		[Bindable]public var selectedColor:Number = 0x00F300;
+		[Bindable]public var selectedColor_Red:String = "0";
+		[Bindable]public var selectedColor_Green:String = "255";
+		[Bindable]public var selectedColor_Blue:String = "0";
+		[Bindable]public var selectedColorAsHex:String = "00F300";
+		[Bindable]public var selectedHue:Number = 0x00F300;
 		
-		[Bindable]
-		public var selectedColorAsHex:String = "00F300";
+		[Bindable]public var textColor:Number = 0xEFEFEF;
 		
-		[Bindable]
-		public var selectedHue:Number = 0x00F300;
-		
-		[Bindable]
-		public var textColor:Number = 0xEFEFEF;
-		
-		[SkinPart(required=true)]
-		public var colorBox:Group;
-		
-		[SkinPart(required=true)]
-		public var colorBoxSelector:Group;
-		
-		[Bindable]
 		[Embed(source="../../../assets/color-picker-cursor.png")]
-		public var colorSelectorCursorImage:Class;
-		private var cursorOffsetX:Number = -5;
-		private var cursorOffsetY:Number = -5;
+		[Bindable]public var colorSelectorCursorImage:Class;
+		[Bindable]public var cursorOffsetX:Number = -5;
+		[Bindable]public var cursorOffsetY:Number = -5;
 		
-		[SkinPart(required=true)]
-		public var colorHues:Group;
-		
-		[Bindable]public var localMouseX:Number;
-		[Bindable]public var localMouseY:Number;
+		private var _mouseEventTarget:Group;
+		private var _colorBoxMouseX:Number;
+		private var _colorBoxMouseY:Number;
 		
 		public function ColorSelector() {
 			super();
@@ -72,17 +64,11 @@ package com.endlesspaths.components
 			super.partAdded(partName, instance);
 			
 			if (instance == colorBox) {
-/*				colorBox.addEventListener(MouseEvent.CLICK, colorBox_Click);*/
-				colorBox.addEventListener(MouseEvent.MOUSE_OVER, Shared_MouseOver);
-				colorBox.addEventListener(MouseEvent.MOUSE_OUT, Shared_MouseOut);
-				
-				colorBox.addEventListener(MouseEvent.MOUSE_DOWN, colorBox_MouseDown);
+				colorBox.addEventListener(MouseEvent.ROLL_OVER, Shared_MouseOver, false, 0, true);
+				colorBox.addEventListener(MouseEvent.MOUSE_DOWN, colorBox_MouseDown, false, 0, true);
 			} else if (instance == colorHues) {
-				colorHues.addEventListener(MouseEvent.CLICK, colorHues_Click);
-				colorHues.addEventListener(MouseEvent.MOUSE_OVER, Shared_MouseOver);
-				colorHues.addEventListener(MouseEvent.MOUSE_OUT, Shared_MouseOut);
-				
-				colorHues.addEventListener(MouseEvent.MOUSE_DOWN, colorHues_MouseDown);
+				colorHues.addEventListener(MouseEvent.ROLL_OVER, Shared_MouseOver, false, 0, true);
+				colorHues.addEventListener(MouseEvent.MOUSE_DOWN, colorHues_MouseDown, false, 0, true);
 			}
 		}
 		
@@ -107,59 +93,115 @@ package com.endlesspaths.components
 			}
 		}
 		
-		private function colorAsHex_TextChange(event:Event):void {
-			
-		}
-		
 		private function Shared_MouseOver(event:MouseEvent):void {
 			CursorManager.removeAllCursors();
 			CursorManager.setCursor(colorSelectorCursorImage, CursorManagerPriority.HIGH, cursorOffsetX, cursorOffsetY);
+			
+			if(event.target == colorBox) {
+				colorBoxSelector.visible = false;
+			}
+			
+			event.target.removeEventListener(MouseEvent.ROLL_OVER, Shared_MouseOver);
+			event.target.addEventListener(MouseEvent.ROLL_OUT, Shared_MouseOut, false, 0, true);
 		}
 		
 		private function Shared_MouseOut(event:MouseEvent):void {
-			CursorManager.removeAllCursors();
-		}
-		
-		private function colorBox_Click(event:MouseEvent):void {
-			updateSelectedColor(event.localX, event.localY);
+			if(!_mouseEventTarget)
+				CursorManager.removeAllCursors();
+			
+			if(event.target == colorBox) {
+				colorBoxSelector.visible = true;
+			}
+			
+			event.target.removeEventListener(MouseEvent.ROLL_OUT, Shared_MouseOut);
+			event.target.addEventListener(MouseEvent.ROLL_OVER, Shared_MouseOver, false, 0, true);
 		}
 		
 		private function colorBox_MouseDown(event:MouseEvent):void {
 			colorBoxSelector.visible = false;
-		
-			colorBox.addEventListener(MouseEvent.MOUSE_UP, colorBox_MouseUp);
-			colorBox.addEventListener(MouseEvent.MOUSE_MOVE, colorBox_MouseMove);
-		}
-		
-		private function colorBox_MouseUp(event:MouseEvent):void {
-			colorBox.removeEventListener(MouseEvent.MOUSE_UP, colorBox_MouseUp);
-			colorBox.removeEventListener(MouseEvent.MOUSE_MOVE, colorBox_MouseMove);
 			
-			updateSelectedColor(event.localX, event.localY);
-			colorBoxSelector.visible = true;
-			event.updateAfterEvent();
+			_mouseEventTarget = colorBox;
+			
+			systemManager.getSandboxRoot().addEventListener(MouseEvent.MOUSE_MOVE, system_mouseMoveHandler, true, 0, true);
+			systemManager.getSandboxRoot().addEventListener(MouseEvent.MOUSE_UP, system_mouseUpHandler, true, 0, true);
+			systemManager.getSandboxRoot().addEventListener(SandboxMouseEvent.MOUSE_UP_SOMEWHERE, system_mouseUpSomewhereHandler, false, 0, true);
 		}
 		
-		private function colorBox_MouseMove(event:MouseEvent):void {
-			updateSelectedColor(event.localX, event.localY);
+		protected function system_mouseMoveHandler(event:MouseEvent):void {
+			if(!event.buttonDown) {
+				event.updateAfterEvent();
+				event.stopImmediatePropagation();
+				event.preventDefault();
+
+				systemManager.getSandboxRoot().removeEventListener(MouseEvent.MOUSE_MOVE, system_mouseMoveHandler, true);
+				systemManager.getSandboxRoot().removeEventListener(MouseEvent.MOUSE_UP, system_mouseUpHandler, false);
+				systemManager.getSandboxRoot().removeEventListener(SandboxMouseEvent.MOUSE_UP_SOMEWHERE, system_mouseUpSomewhereHandler);
+			} else if(_mouseEventTarget) {
+				var p:Point = _mouseEventTarget.globalToLocal(new Point(event.stageX, event.stageY));
+			
+				if(_mouseEventTarget == colorBox) {
+					updateSelectedColor(p.x, p.y);
+				} else if(_mouseEventTarget == colorHues) {
+					updateSelectedHue(p.x, p.y);
+				}
+				
+				event.updateAfterEvent();
+			}
+		}
+	
+		protected function system_mouseUpHandler(event:MouseEvent):void {
 			event.updateAfterEvent();
+			event.stopImmediatePropagation();
+			event.preventDefault();
+		
+			systemManager.getSandboxRoot().removeEventListener(MouseEvent.MOUSE_MOVE, system_mouseMoveHandler, true);
+			systemManager.getSandboxRoot().removeEventListener(MouseEvent.MOUSE_UP, system_mouseUpHandler, false);
+			systemManager.getSandboxRoot().removeEventListener(SandboxMouseEvent.MOUSE_UP_SOMEWHERE, system_mouseUpSomewhereHandler);
+			
+			if(_mouseEventTarget) {
+				var p:Point = _mouseEventTarget.globalToLocal(new Point(event.stageX, event.stageY));
+				
+				if(_mouseEventTarget == colorBox) {
+					updateSelectedColor(p.x, p.y);
+					colorBoxSelector.visible = true;
+				} else if(_mouseEventTarget == colorHues) {
+					updateSelectedHue(p.x, p.y);
+				}
+			}
+			
+			_mouseEventTarget = null;
+			CursorManager.removeAllCursors();
+		}
+		
+		protected function system_mouseUpSomewhereHandler(event:SandboxMouseEvent):void {
+			event.stopImmediatePropagation();
+			event.preventDefault();
+		
+			systemManager.getSandboxRoot().removeEventListener(MouseEvent.MOUSE_MOVE, system_mouseMoveHandler);
+			systemManager.getSandboxRoot().removeEventListener(MouseEvent.MOUSE_UP, system_mouseUpHandler);
+			systemManager.getSandboxRoot().removeEventListener(SandboxMouseEvent.MOUSE_UP_SOMEWHERE, system_mouseUpSomewhereHandler);
+			
+			_mouseEventTarget = null;
 		}
 		
 		private function updateSelectedColor(x:uint, y:uint):void {
-			localMouseX = x;
-			localMouseY = y;
+			_colorBoxMouseX = x;
+			_colorBoxMouseY = y;
 			
-			if(localMouseX < 0) localMouseX = 0;
-			if(localMouseX > colorBox.width - 2) localMouseX = colorBox.width - 2;
+			if(_colorBoxMouseX >= 10000000) _colorBoxMouseX = 0;
+			if(_colorBoxMouseY >= 10000000) _colorBoxMouseY = 0;
 			
-			if(localMouseY < 0) localMouseY = 0;
-			if(localMouseY > colorBox.height - 2) localMouseY = colorBox.height - 2;
+			if(_colorBoxMouseX < 0) _colorBoxMouseX = 2;
+			if(_colorBoxMouseX > colorBox.width - 2) _colorBoxMouseX = colorBox.width - 2;
+			
+			if(_colorBoxMouseY < 0) _colorBoxMouseY = 2;
+			if(_colorBoxMouseY > colorBox.height - 2) _colorBoxMouseY = colorBox.height - 2;
 			
 			var bmap:BitmapData = new BitmapData(colorBox.width, colorBox.height, false);
 			bmap.draw(colorBox);
 			
-			colorBoxSelector.y = localMouseY;
-			colorBoxSelector.x = localMouseX;
+			colorBoxSelector.y = _colorBoxMouseY;
+			colorBoxSelector.x = _colorBoxMouseX;
 			
 			updateSelectedColorValues(bmap.getPixel(colorBoxSelector.x, colorBoxSelector.y));
 		}
@@ -168,52 +210,44 @@ package com.endlesspaths.components
 			removeEventListener(PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged);
 			
 			selectedColor = color;
-			selectedColor_Red = ((selectedColor >> 16) & 0xff).toString(10);
-			selectedColor_Green = ((selectedColor >> 8) & 0xff).toString(10);
-			selectedColor_Blue = (selectedColor & 0xff).toString(10);
+			selectedColor_Red = ((selectedColor >> 16) & 0xff).toString();
+			selectedColor_Green = ((selectedColor >> 8) & 0xff).toString();
+			selectedColor_Blue = (selectedColor & 0xff).toString();
 			selectedColorAsHex = selectedColor.toString(16).toUpperCase();
 			
 			addEventListener(PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged, false, 0, true);
 		}
 		
 		public function updateSelectedHue(x:uint, y:uint):void {
-			localMouseX = x;
-			localMouseY = y;
+			if(x >= 10000000) x = 0;
+			if(y >= 10000000) y = 0;
+			
+			if(x < 0) x = 2;
+			if(x > colorHues.width - 2) x = colorHues.width - 2;
+			
+			if(y < 0) y = 2;
+			if(y > colorHues.height - 2) y = colorHues.height - 2;
+			
 			var bmap:BitmapData = new BitmapData(colorHues.width, colorHues.height, false);
 			bmap.draw(colorHues);
 			
 			selectedHue = bmap.getPixel(x, y);
-			updateSelectedColor(200, 1);
+			updateSelectedColor(_colorBoxMouseX, _colorBoxMouseY);
 			colorBoxSelector.visible = true;
 		}
 		
 		public function setColorAndHue(color:Number):void {
 			updateSelectedColorValues(color);
-			selectedHue = color;
-		}
-		
-		private function rgbToHSV(r:Number, g:Number, b:Number):Number {
-			r /= 255;
-			g /= 255;
-			b /= 255;
 			
-			var h:Number,s:Number,
-				min:Number = Math.min(Math.min(r,g),b),
-				max:Number = Math.max(Math.max(r,g),b),
-				delta:Number = max-min;
+			var hsb:HSBColor = HSBColor.convertRGBtoHSB(color);
 			
-			switch (max) {
-				case min: h=0; break;
-				case r:	  h=60*(g-b)/delta;
-					if (g<b) {
-						h+=360;
-					}
-					break;
-				case g:	  h=(60*(b-r)/delta)+120; break;
-				case b:	  h=(60*(r-g)/delta)+240; break;
-			}
+			colorBoxSelector.x = _colorBoxMouseX = colorBox.width * hsb.saturation;
+			colorBoxSelector.y = _colorBoxMouseY = colorBox.height * (1.0 - hsb.brightness);
+			colorBoxSelector.visible = true;
 			
-			return h;
+			hsb.saturation = 1.0;
+			hsb.brightness = 1.0;
+			selectedHue = HSBColor.convertHSBtoRGB(hsb.hue, hsb.saturation, hsb.brightness);
 		}
 		
 		private function colorHues_Click(event:MouseEvent):void {
@@ -221,23 +255,11 @@ package com.endlesspaths.components
 		}
 		
 		private function colorHues_MouseDown(event:MouseEvent):void {
-			colorHues.addEventListener(MouseEvent.MOUSE_UP, colorHues_MouseUp);
-			colorHues.addEventListener(MouseEvent.MOUSE_MOVE, colorHues_MouseMove);
-		}
-		
-		private function colorHues_MouseUp(event:MouseEvent):void {
-			colorHues.removeEventListener(MouseEvent.MOUSE_UP, colorHues_MouseUp);
-			colorHues.removeEventListener(MouseEvent.MOUSE_MOVE, colorHues_MouseMove);
+			_mouseEventTarget = colorHues;
 			
-			updateSelectedHue(event.localX, event.localY);
-		}
-		
-		private function colorHues_MouseMove(event:MouseEvent):void {
-			if(!event.buttonDown) {
-				return;
-			}
-			
-			updateSelectedHue(event.localX, event.localY);
+			systemManager.getSandboxRoot().addEventListener(MouseEvent.MOUSE_MOVE, system_mouseMoveHandler, true, 0, true);
+			systemManager.getSandboxRoot().addEventListener(MouseEvent.MOUSE_UP, system_mouseUpHandler, true, 0, true);
+			systemManager.getSandboxRoot().addEventListener(SandboxMouseEvent.MOUSE_UP_SOMEWHERE, system_mouseUpSomewhereHandler, false, 0, true);
 		}
 	}
 }

@@ -65,7 +65,7 @@ package com.endlesspaths.components
 			super.partAdded(partName, instance);
 			
 			if(instance == gradientTrackContainer) {
-				gradientTrackContainer.addEventListener(MouseEvent.CLICK, gradientTrack_Click);
+				gradientTrackContainer.addEventListener(MouseEvent.CLICK, gradientTrack_Click, false, 0, true);
 			} else if(instance == gradientThumbs || instance == gradientTrack) {
 				for(var i:int = 0; i < selectedColors.length; i++) {
 					var colorObj:GradientColorEntry = selectedColors.getItemAt(i) as GradientColorEntry;
@@ -78,7 +78,7 @@ package com.endlesspaths.components
 		
 		protected function boundPropertyChanged(event:PropertyChangeEvent):void {
 			if (event.property == "selectedColors" && selectedColors != null) {
-				selectedColors.addEventListener(CollectionEvent.COLLECTION_CHANGE, selectedColors_Change);
+				selectedColors.addEventListener(CollectionEvent.COLLECTION_CHANGE, selectedColors_Change, false, 0, true);
 			}
 		}
 		
@@ -207,9 +207,9 @@ package com.endlesspaths.components
 			selectedThumb = event.target as GradientSelectorThumb;
 			_clickOffset = selectedThumb.globalToLocal(new Point(event.stageX, event.stageY));
 			
-			systemManager.getSandboxRoot().addEventListener(MouseEvent.MOUSE_MOVE, system_mouseMoveHandler, true);
-			systemManager.getSandboxRoot().addEventListener(MouseEvent.MOUSE_UP, system_mouseUpHandler, true);
-			systemManager.getSandboxRoot().addEventListener(SandboxMouseEvent.MOUSE_UP_SOMEWHERE, system_mouseUpHandler);
+			systemManager.getSandboxRoot().addEventListener(MouseEvent.MOUSE_MOVE, system_mouseMoveHandler, true, 0, true);
+			systemManager.getSandboxRoot().addEventListener(MouseEvent.MOUSE_UP, system_mouseUpHandler, true, 0, true);
+			systemManager.getSandboxRoot().addEventListener(SandboxMouseEvent.MOUSE_UP_SOMEWHERE, system_mouseUpHandler, false, 0, true);
 		}
 		
 		protected function system_mouseMoveHandler(event:MouseEvent):void {
@@ -275,8 +275,8 @@ package com.endlesspaths.components
 			}
 			elem.move(newX, 0);
 		
-			elem.addEventListener(Event.CHANGE, gradientThumb_Change);
-			elem.addEventListener(MouseEvent.MOUSE_DOWN, gradientThumb_MouseDown, false, 0);
+			elem.addEventListener(Event.CHANGE, gradientThumb_Change, false, 0, true);
+			elem.addEventListener(MouseEvent.MOUSE_DOWN, gradientThumb_MouseDown, false, 0, true);
 			
 			_thumbPositionsDirty = true;
 			

@@ -37,7 +37,7 @@ package com.endlesspaths.components
 			
 			setStyle("skinClass", Class(TextFlowEditorSkin));
 			
-			addEventListener( PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged);
+			addEventListener(PropertyChangeEvent.PROPERTY_CHANGE, boundPropertyChanged, false, 0, true);
 		}
 		
 		override protected function getCurrentSkinState():String {
@@ -54,7 +54,7 @@ package com.endlesspaths.components
 			}
 			
 			_editor = value;
-			_editor.addEventListener("selectionChange", editor_selectionChangeHandler);
+			_editor.addEventListener("selectionChange", editor_selectionChangeHandler, false, 0, true);
 			_editor.selectionHighlighting = TextSelectionHighlighting.ALWAYS;
 		}
 		

@@ -78,9 +78,9 @@ package com.endlesspaths.components
 			super.partAdded(partName, instance);
 			
 			if (instance == decreaseButton) {
-				decreaseButton.addEventListener(MouseEvent.CLICK, decreaseButton_click);
+				decreaseButton.addEventListener(MouseEvent.CLICK, decreaseButton_click, false, 0, true);
 			} else if (instance == increaseButton) {
-				increaseButton.addEventListener(MouseEvent.CLICK, increaseButton_click);
+				increaseButton.addEventListener(MouseEvent.CLICK, increaseButton_click, false, 0, true);
 			} else if (instance == stepperLabel) {
 				updateLabel();
 			}

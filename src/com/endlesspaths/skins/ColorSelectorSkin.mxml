@@ -44,7 +44,7 @@
 			</s:Group>
 		
 			<s:Group id="colorBoxSelector">
-				<s:BitmapImage source="{hostComponent.colorSelectorCursorImage}" top="-5" left="-5"/>
+				<s:BitmapImage source="{hostComponent.colorSelectorCursorImage}" top="{hostComponent.cursorOffsetY + 1}" left="{hostComponent.cursorOffsetX + 1}"/>
 			</s:Group>
 		
 			<s:Rect width="100%" height="100%">
@@ -121,6 +121,5 @@
 			<s:Label text="#:" color="{hostComponent.textColor}" width="14" height="{colorAsHex.height}" textAlign="right" verticalAlign="middle" />
 			<s:TextInput id="colorAsHex" text="@{hostComponent.selectedColorAsHex}" width="60" maxChars="6" restrict="0-9A-Fa-f" />
 		</s:Group>
-		<!-- <s:TextInput text="{hostComponent.localMouseX}, {hostComponent.localMouseY}" /> -->
 	</s:Group>
 </s:Skin>

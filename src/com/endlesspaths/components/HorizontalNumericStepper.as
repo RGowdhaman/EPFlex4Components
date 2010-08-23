@@ -70,17 +70,17 @@ package com.endlesspaths.components
 			super.partAdded(partName, instance);
 			
 			if (instance == decreaseButton) {
-				decreaseButton.addEventListener(MouseEvent.CLICK, decreaseButton_click);
+				decreaseButton.addEventListener(MouseEvent.CLICK, decreaseButton_click, false, 0, true);
 			} else if (instance == increaseButton) {
-				increaseButton.addEventListener(MouseEvent.CLICK, increaseButton_click);
+				increaseButton.addEventListener(MouseEvent.CLICK, increaseButton_click, false, 0, true);
 			} else if (instance == numericLabel) {
 				updateLabel();
 				
 				numericLabel.doubleClickEnabled = numericLabel.buttonMode = true;
-				numericLabel.addEventListener(MouseEvent.DOUBLE_CLICK, numericLabel_Click);
+				numericLabel.addEventListener(MouseEvent.DOUBLE_CLICK, numericLabel_Click, false, 0, true);
 			} else if(instance == numericManualEdit) {
-				numericManualEdit.addEventListener(MouseEvent.DOUBLE_CLICK, numericManualEdit_Click);
-				numericManualEdit.addEventListener(FlexEvent.ENTER, numericManualEdit_Click);
+				numericManualEdit.addEventListener(MouseEvent.DOUBLE_CLICK, numericManualEdit_Click, false, 0, true);
+				numericManualEdit.addEventListener(FlexEvent.ENTER, numericManualEdit_Click, false, 0, true);
 			}
 			
 			if(numericManualEdit != null && numericLabel != null) {
