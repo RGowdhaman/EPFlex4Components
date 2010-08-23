@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Skin xmlns:ep="com.endlesspaths.components.*" xmlns:fx="http://ns.adobe.com/mxml/2009" xmlns:s="library://ns.adobe.com/flex/spark" xmlns:mx="library://ns.adobe.com/flex/mx" xmlns:fb="http://ns.adobe.com/flashbuilder/2009">
+	<fx:Metadata>
+		[HostComponent("com.endlesspaths.components.StatefulPopUpAnchor")]
+	</fx:Metadata>
+	
+	<s:layout>
+		<s:BasicLayout/>
+	</s:layout>
+	
+	<s:states>
+		<s:State name="normal" />
+		<s:State name="opened" />
+		<s:State name="disabled" />
+	</s:states>
+	
+	<s:transitions>
+		<s:Transition fromState="normal" toState="opened" autoReverse="true">
+			<s:Fade target="{contentGroup}" duration="150" />
+		</s:Transition>
+	</s:transitions>
+	
+	<ep:AutoPopUpAnchor id="popUpAnchor" popUpOpen="@{hostComponent.displayPopUp}" includeInLayout="false" popUpPosition="{hostComponent.popUpPosition}" width="0" height="0">
+		<s:Group id="contentGroup" visible="false" visible.opened="true" includeInLayout="false" minWidth="0" minHeight="0">
+			<s:layout>
+				<s:VerticalLayout gap="8" />
+			</s:layout>
+		</s:Group>
+	</ep:AutoPopUpAnchor>
+</s:Skin>
