@@ -25,7 +25,7 @@ package com.endlesspaths.components
 		public var gradientData:GradientColorEntry;
 		
 		[SkinPart]
-		public var colorEditorPopup:AutoPopUpAnchor;
+		public var colorEditorPopup:StatefulPopUpAnchor;
 		
 		public function GradientSelectorThumb() {
 			super();
